@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
 {
+    [Header("General Stats")]
     public GameObject groundExplosionEffect;
     public float heightAboveGroundToSpawn = 0.2f;
 

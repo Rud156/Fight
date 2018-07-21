@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Effect Collision
-  - Jumping Ball
+  - Circular Spawn
+  - Collision Spawn
   layers:
   - Default
   - TransparentFX

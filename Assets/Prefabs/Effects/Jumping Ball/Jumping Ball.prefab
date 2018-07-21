@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199640361956424020}
   m_Layer: 0
   m_Name: Jumping Ball
-  m_TagString: Untagged
+  m_TagString: Collision Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
