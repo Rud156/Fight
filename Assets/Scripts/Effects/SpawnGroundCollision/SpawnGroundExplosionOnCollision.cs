@@ -6,6 +6,7 @@ public class SpawnGroundExplosionOnCollision : SpawnGroundCollisionEffectAtPoint
 {
     [Header("Circular Ground Effect")]
     public int totalGroundEffectsToSpawn = 10;
+    public float sizeDivisibilityFactor = 5;
 
     /// <summary>
     /// OnParticleCollision is called when a particle hits a collider.
@@ -41,7 +42,7 @@ public class SpawnGroundExplosionOnCollision : SpawnGroundCollisionEffectAtPoint
         particleSystem.GetParticles(particles);
         particleSystem.GetCollisionEvents(gameObject, collisionEvents);
 
-        float currentRadius = particles[0].GetCurrentSize(particleSystem) / 4;
+        float currentRadius = particles[0].GetCurrentSize(particleSystem) / sizeDivisibilityFactor;
         Vector3 centerPoint = collisionEvents[0].intersection;
 
         float angleDiv = 360 / totalGroundEffectsToSpawn;
