@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Circular Spawn
   - Collision Spawn
+  - Enemy
+  - Sphere Spawn
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,11 @@ public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
     public GameObject groundExplosionEffect;
     public float heightAboveGroundToSpawn = 0.2f;
 
+
+    [Header("Explosion Stats")]
+    public float affectRadius = 5f;
+    public float damagePower = 10f;
+
     protected List<ParticleCollisionEvent> collisionEvents;
 
     /// <summary>
@@ -26,6 +31,16 @@ public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
             Instantiate(groundExplosionEffect,
                 new Vector3(position.x, heightAboveGroundToSpawn, position.z),
                 groundExplosionEffect.transform.rotation);
+
+            Collider[] colliders = Physics.OverlapSphere(position, affectRadius);
+            foreach (Collider collider in colliders)
+            {
+                Rigidbody rb = collider.GetComponent<Rigidbody>();
+                if (!rb || (!rb.CompareTag(TagsManager.Player) && !rb.CompareTag(TagsManager.Enemy)))
+                    return;
+
+                rb.AddExplosionForce(damagePower, position, affectRadius, 3f, ForceMode.Impulse);
+            }
         }
     }
 
