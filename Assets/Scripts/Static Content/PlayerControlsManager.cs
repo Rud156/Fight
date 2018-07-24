@@ -11,8 +11,10 @@ public class PlayerControlsManager
     // Animation Names
     public const string FirstAttack = "Attack0";
     public const string SecondAttack = "Attack1";
+    public const string ThirdAttack = "Attack2";
 
     // Animator Values
     public const string Movement = "Move";
     public const string Attack = "Attack";
+    public const string Fire = "Fire Arc";
 }

@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4719865441371224}
   - component: {fileID: 33666217976299208}
-  - component: {fileID: 64515335496905820}
   - component: {fileID: 23040843894288790}
   m_Layer: 0
   m_Name: Arc Plane (6)
@@ -38,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4128734081752470}
   - component: {fileID: 33063639447544932}
-  - component: {fileID: 64347706960866652}
   - component: {fileID: 23314776150352920}
   m_Layer: 0
   m_Name: Arc Plane (2)
@@ -56,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4427937741379568}
   - component: {fileID: 33629204758545584}
-  - component: {fileID: 64086087189254698}
   - component: {fileID: 23722626886679352}
   m_Layer: 0
   m_Name: Arc Plane (8)
@@ -74,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4390922564208164}
   - component: {fileID: 33850925476434522}
-  - component: {fileID: 64076159816943634}
   - component: {fileID: 23476148147922950}
   m_Layer: 0
   m_Name: Arc Plane (10)
@@ -92,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4781937010369498}
   - component: {fileID: 33370362047502518}
-  - component: {fileID: 64317917999753606}
   - component: {fileID: 23541537506842206}
   m_Layer: 0
   m_Name: Arc Plane (5)
@@ -110,7 +105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4965716503937022}
   - component: {fileID: 33767750474042530}
-  - component: {fileID: 64249614827345458}
   - component: {fileID: 23141855779668104}
   m_Layer: 0
   m_Name: Arc Plane (7)
@@ -128,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4509118977220936}
   - component: {fileID: 33635221571573772}
-  - component: {fileID: 64315299413968464}
   - component: {fileID: 23227641200708438}
   m_Layer: 0
   m_Name: Arc Plane (9)
@@ -146,7 +139,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4196619142005744}
   - component: {fileID: 33128401479189536}
-  - component: {fileID: 64327826627400676}
   - component: {fileID: 23446271274125480}
   m_Layer: 0
   m_Name: Arc Plane (4)
@@ -169,6 +161,8 @@ GameObject:
   - component: {fileID: 65768552351708412}
   - component: {fileID: 65876066966163180}
   - component: {fileID: 65018412801476424}
+  - component: {fileID: 54713103841089296}
+  - component: {fileID: 114741671459607948}
   m_Layer: 0
   m_Name: Arc Shooter Non Particle
   m_TagString: Sphere Spawn
@@ -185,7 +179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4995013477641344}
   - component: {fileID: 33042969216481740}
-  - component: {fileID: 64907230852974982}
   - component: {fileID: 23253722292970582}
   m_Layer: 0
   m_Name: Arc Plane (1)
@@ -203,7 +196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4786678852284792}
   - component: {fileID: 33352379997643782}
-  - component: {fileID: 64745118646821048}
   - component: {fileID: 23668268570820154}
   m_Layer: 0
   m_Name: Arc Plane (3)
@@ -245,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591774810505864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4995013477641344}
@@ -775,146 +767,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211428829785702}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64076159816943634
-MeshCollider:
+--- !u!54 &54713103841089296
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211428829785702}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64086087189254698
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1144138278715126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64249614827345458
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1284858044266172}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64315299413968464
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1379682269335734}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64317917999753606
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242509558026584}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64327826627400676
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1509799650265710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64347706960866652
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1124777462369994}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64515335496905820
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1024999659236642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64745118646821048
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1708817209859576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64907230852974982
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593839522654922}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_GameObject: {fileID: 1591774810505864}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65018412801476424
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -990,3 +857,15 @@ MonoBehaviour:
     type: 2}
   affectRadius: 5
   damagePower: 10
+--- !u!114 &114741671459607948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1591774810505864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6bec654902011748916f5b67c404ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterTime: 3

@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float rotationSpeed;
 
+    [Header("Arc Attack Effect")]
+    public GameObject arcEffect;
+    public float arcAttackMovementSpeed;
+    public GameObject arcInstantionPosition;
+
     private int upcomingAttack;
     private Rigidbody playerRB;
     private Animator playerAnimator;
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         MakePlayerAttack();
+        MakePlayerShootArc();
     }
 
     void MovePlayer()
@@ -50,9 +56,9 @@ public class PlayerController : MonoBehaviour
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
                 playerAnimator.SetInteger(PlayerControlsManager.Attack, 2);
-
             else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack))
                 playerAnimator.SetInteger(PlayerControlsManager.Attack, 1);
+
             else
                 playerAnimator.SetInteger(PlayerControlsManager.Attack, 1);
         }
@@ -72,5 +78,20 @@ public class PlayerController : MonoBehaviour
             else
                 playerAnimator.SetInteger(PlayerControlsManager.Attack, 0);
         }
+    }
+
+    void MakePlayerShootArc()
+    {
+        if (Input.GetMouseButtonDown(1))
+            playerAnimator.SetTrigger(PlayerControlsManager.Fire);
+    }
+
+    void ShootArc()
+    {
+        GameObject arcAttackEffect = Instantiate(arcEffect, arcInstantionPosition.transform.position,
+                gameObject.transform.rotation) as GameObject;
+
+        Rigidbody arcRigidBody = arcAttackEffect.GetComponent<Rigidbody>();
+        arcRigidBody.velocity = gameObject.transform.forward * arcAttackMovementSpeed * Time.deltaTime;
     }
 }
