@@ -88,7 +88,8 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerShootArc()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) &&
+            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
             playerAnimator.SetTrigger(PlayerControlsManager.Fire);
     }
 

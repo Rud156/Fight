@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerControlsManager
 {
-    // Controls
+    // Keyboard Controls
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
+
+    // Mouse Controls
+    public const string MouseX = "Mouse X";
+    public const string MouseY = "Mouse Y";
 
     // Combat Animation Names
     public const string FirstAttack = "Attack0";
