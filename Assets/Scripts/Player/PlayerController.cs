@@ -15,14 +15,12 @@ public class PlayerController : MonoBehaviour
     public float arcAttackMovementSpeed;
     public GameObject arcInstantionPosition;
 
-    private int upcomingAttack;
     private Rigidbody playerRB;
     private Animator playerAnimator;
 
     // Use this for initialization
     void Start()
     {
-        upcomingAttack = 0;
         playerRB = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
     }
@@ -37,11 +35,19 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.Idle) &&
+            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.Run))
+        {
+            playerRB.velocity = Vector3.zero;
+            return;
+        }
+
+
         float moveZ = Input.GetAxis(PlayerControlsManager.Vertical);
         if (moveZ > 0)
         {
             playerAnimator.SetBool(PlayerControlsManager.Movement, true);
-            playerRB.velocity = Vector3.forward * moveZ * movementSpeed * Time.deltaTime;
+            playerRB.velocity = gameObject.transform.forward * moveZ * movementSpeed * Time.deltaTime;
         }
         else
             playerAnimator.SetBool(PlayerControlsManager.Movement, false);
