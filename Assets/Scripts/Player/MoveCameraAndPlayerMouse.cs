@@ -4,23 +4,7 @@ using UnityEngine;
 
 public class MoveCameraAndPlayerMouse : MonoBehaviour
 {
-
-    [Header("Camera Stats")]
-    public GameObject mainCamera;
-    public float horizontalRotationSpeed = 100;
-    public float verticalRotationSpeed = 10;
-
-    private float maxLookAngle = 60f;
-    private float minLookAngle = 30f;
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
-    {
-        Cursor.visible = false;
-    }
+    public float horizontalRotationSpeed = 1000;
 
     // Update is called once per frame
     void Update()
@@ -30,12 +14,8 @@ public class MoveCameraAndPlayerMouse : MonoBehaviour
 
     void RotatePlayerAndMoveCamera()
     {
-        float horizontal = Input.GetAxis(PlayerControlsManager.MouseX) * horizontalRotationSpeed
-            * Time.deltaTime;
+        float mouseX = Input.GetAxis(PlayerControlsManager.MouseX);
 
-        float vertical = Input.GetAxis(PlayerControlsManager.MouseY) * verticalRotationSpeed
-            * Time.deltaTime;
-
-
+        gameObject.transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed * Time.deltaTime);
     }
 }
