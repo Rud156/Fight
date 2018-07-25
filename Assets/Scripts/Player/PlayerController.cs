@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private bool arcShotStarted;
 
-    private bool isJumping = false;
+    private bool isFalling;
 
     // Use this for initialization
     void Start()
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         playerRB = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
         arcShotStarted = false;
+        isFalling = false;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
         MakePlayerAttack();
         MakePlayerShootArc();
         MakePlayerJump();
-        // MakePlayerFall();
+        MakePlayerFall();
     }
 
     /// <summary>
@@ -47,32 +48,32 @@ public class PlayerController : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if (!isJumping)
+        if (!isFalling)
             return;
 
-        print("On Collision Entered");
-        playerAnimator.SetBool(PlayerControlsManager.Fall, false);
-        isJumping = false;
+        playerAnimator.SetBool(PlayerControlsManager.FallParam, false);
+        isFalling = false;
     }
 
     void MovePlayer()
     {
-        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.Idle) &&
-            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.Run))
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack) ||
+        playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack) ||
+        playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
         {
             playerRB.velocity = Vector3.zero;
             return;
         }
 
 
-        float moveZ = isJumping ? 0 : Input.GetAxis(PlayerControlsManager.Vertical);
+        float moveZ = isFalling ? 0 : Input.GetAxis(PlayerControlsManager.Vertical);
         if (moveZ > 0)
         {
-            playerAnimator.SetBool(PlayerControlsManager.Movement, true);
+            playerAnimator.SetBool(PlayerControlsManager.MoveParam, true);
             playerRB.velocity = gameObject.transform.forward * moveZ * movementSpeed * Time.deltaTime;
         }
         else
-            playerAnimator.SetBool(PlayerControlsManager.Movement, false);
+            playerAnimator.SetBool(PlayerControlsManager.MoveParam, false);
 
         float moveX = Input.GetAxis(PlayerControlsManager.Horizontal);
         playerRB.transform.Rotate(Vector3.up * moveX * rotationSpeed * Time.deltaTime);
@@ -80,22 +81,22 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerAttack()
     {
-        if (isJumping)
+        if (isFalling)
             return;
 
         if (Input.GetMouseButton(0))
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
-                playerAnimator.SetInteger(PlayerControlsManager.Attack, 2);
+                playerAnimator.SetInteger(PlayerControlsManager.AttackParam, 2);
             else if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack))
-                playerAnimator.SetInteger(PlayerControlsManager.Attack, 1);
+                playerAnimator.SetInteger(PlayerControlsManager.AttackParam, 1);
 
             else
-                playerAnimator.SetInteger(PlayerControlsManager.Attack, 1);
+                playerAnimator.SetInteger(PlayerControlsManager.AttackParam, 1);
         }
         else
         {
-            int upcomingAttack = playerAnimator.GetInteger(PlayerControlsManager.Attack);
+            int upcomingAttack = playerAnimator.GetInteger(PlayerControlsManager.AttackParam);
             if (upcomingAttack == 2 &&
                 playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
             {
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 // Do Nothing
             }
             else
-                playerAnimator.SetInteger(PlayerControlsManager.Attack, 0);
+                playerAnimator.SetInteger(PlayerControlsManager.AttackParam, 0);
         }
     }
 
@@ -116,30 +117,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1) &&
         !arcShotStarted)
         {
-            playerAnimator.SetTrigger(PlayerControlsManager.Fire);
+            playerAnimator.SetTrigger(PlayerControlsManager.FireParam);
             arcShotStarted = true;
         }
     }
 
     void MakePlayerJump()
     {
-        if (Input.GetKeyDown(PlayerControlsManager.JumpControl) && !isJumping)
+        if (Input.GetKeyDown(PlayerControlsManager.JumpKeyboard) && !isFalling)
         {
             playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-            playerAnimator.SetTrigger(PlayerControlsManager.Jump);
-            isJumping = true;
+            playerAnimator.SetTrigger(PlayerControlsManager.JumpParam);
         }
     }
 
     void MakePlayerFall()
     {
         float yVelocity = playerRB.velocity.y;
-        print(yVelocity);
-        if (yVelocity < -1 && !isJumping)
+        if (yVelocity < -1 && !isFalling)
         {
             playerAnimator.Play(PlayerControlsManager.FallAnimation);
-            playerAnimator.SetBool(PlayerControlsManager.Fall, true);
-            isJumping = true;
+            playerAnimator.SetBool(PlayerControlsManager.FallParam, true);
+            isFalling = true;
         }
     }
 

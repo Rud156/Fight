@@ -7,7 +7,7 @@ public class PlayerControlsManager
     // Keyboard Controls
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
-    public const string JumpControl = "space";
+    public const string JumpKeyboard = "space";
 
     // Mouse Controls
     public const string MouseX = "Mouse X";
@@ -19,16 +19,15 @@ public class PlayerControlsManager
     public const string ThirdAttack = "Attack2";
 
     // Movement Animation Names;
-    public const string Idle = "Idle";
-    public const string Run = "Run";
+    public const string IdleAnimation = "Idle";
+    public const string RunAnimation = "Run";
     public const string FallAnimation = "Fall";
 
-    // Animation Parameters
-    public const string Jump = "Jump";
-    public const string Fall = "Falling";
 
     // Animator Values
-    public const string Movement = "Move";
-    public const string Attack = "Attack";
-    public const string Fire = "Fire Arc";
+    public const string MoveParam = "Move";
+    public const string AttackParam = "Attack";
+    public const string FireParam = "Fire Arc";
+    public const string JumpParam = "Jump";
+    public const string FallParam = "Falling";
 }
