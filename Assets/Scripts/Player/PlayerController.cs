@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Control Stats")]
     public float movementSpeed;
     public float rotationSpeed;
+    public float jumpSpeed;
 
     [Header("Arc Attack Effect")]
     public GameObject arcEffect;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     private Animator playerAnimator;
     private bool arcShotStarted;
+
+    private bool isJumping = false;
 
     // Use this for initialization
     void Start()
@@ -33,8 +36,30 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         MakePlayerAttack();
         MakePlayerShootArc();
-        MakePlayerJump();
+        // MakePlayerJump();
+    }
+
+    /// <summary>
+    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void FixedUpdate()
+    {
         MakePlayerFall();
+    }
+
+    /// <summary>
+    /// OnCollisionEnter is called when this collider/rigidbody has begun
+    /// touching another rigidbody/collider.
+    /// </summary>
+    /// <param name="other">The Collision data associated with this collision.</param>
+    void OnCollisionEnter(Collision other)
+    {
+        if (!isJumping)
+            return;
+
+        print("On Collision Entered");
+        playerAnimator.SetBool(PlayerControlsManager.Fall, false);
+        isJumping = false;
     }
 
     void MovePlayer()
@@ -47,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        float moveZ = Input.GetAxis(PlayerControlsManager.Vertical);
+        float moveZ = isJumping ? 0 : Input.GetAxis(PlayerControlsManager.Vertical);
         if (moveZ > 0)
         {
             playerAnimator.SetBool(PlayerControlsManager.Movement, true);
@@ -62,6 +87,9 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerAttack()
     {
+        if (isJumping)
+            return;
+
         if (Input.GetMouseButton(0))
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
@@ -102,12 +130,24 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerJump()
     {
-
+        if (Input.GetKeyDown(PlayerControlsManager.JumpControl) && !isJumping)
+        {
+            playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            playerAnimator.SetTrigger(PlayerControlsManager.Jump);
+            isJumping = true;
+        }
     }
 
     void MakePlayerFall()
     {
-
+        float yVelocity = playerRB.velocity.y;
+        print(yVelocity);
+        if (yVelocity < 0 && !isJumping)
+        {
+            playerAnimator.Play(PlayerControlsManager.FallAnimation);
+            playerAnimator.SetBool(PlayerControlsManager.Fall, true);
+            isJumping = true;
+        }
     }
 
     void ShootArc()
