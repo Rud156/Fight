@@ -8,6 +8,7 @@ TagManager:
   - Collision Spawn
   - Enemy
   - Sphere Spawn
+  - Missile
   layers:
   - Default
   - TransparentFX

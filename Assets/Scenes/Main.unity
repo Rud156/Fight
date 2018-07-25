@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upDownSpeed: 250
   minAngle: 30
-  maxAngle: 350
+  maxAngle: 340
 --- !u!1 &1818460834
 GameObject:
   m_ObjectHideFlags: 0
