@@ -36,15 +36,8 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         MakePlayerAttack();
         MakePlayerShootArc();
-        // MakePlayerJump();
-    }
-
-    /// <summary>
-    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void FixedUpdate()
-    {
-        MakePlayerFall();
+        MakePlayerJump();
+        // MakePlayerFall();
     }
 
     /// <summary>
@@ -142,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         float yVelocity = playerRB.velocity.y;
         print(yVelocity);
-        if (yVelocity < 0 && !isJumping)
+        if (yVelocity < -1 && !isJumping)
         {
             playerAnimator.Play(PlayerControlsManager.FallAnimation);
             playerAnimator.SetBool(PlayerControlsManager.Fall, true);
