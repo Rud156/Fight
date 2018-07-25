@@ -7,6 +7,7 @@ public class PlayerControlsManager
     // Keyboard Controls
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
+    public const string Jump = "space";
 
     // Mouse Controls
     public const string MouseX = "Mouse X";

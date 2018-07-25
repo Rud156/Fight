@@ -1379,6 +1379,7 @@ GameObject:
   - component: {fileID: 1426630706}
   - component: {fileID: 1426630703}
   - component: {fileID: 1426630705}
+  - component: {fileID: 1426630707}
   m_Layer: 0
   m_Name: Ninja Warrior
   m_TagString: Player
@@ -1556,6 +1557,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1426630707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426630699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df35f41b18af08643acc8177960c9946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalRotationSpeed: 250
 --- !u!1 &1495028725
 GameObject:
   m_ObjectHideFlags: 0

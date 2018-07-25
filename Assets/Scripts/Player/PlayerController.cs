@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRB;
     private Animator playerAnimator;
+    private bool arcShotStarted;
 
     // Use this for initialization
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
+        arcShotStarted = false;
     }
 
     // Update is called once per frame
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         MakePlayerAttack();
         MakePlayerShootArc();
+        MakePlayerJump();
+        MakePlayerFall();
     }
 
     void MovePlayer()
@@ -89,8 +93,21 @@ public class PlayerController : MonoBehaviour
     void MakePlayerShootArc()
     {
         if (Input.GetMouseButtonDown(1) &&
-            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
+        !arcShotStarted)
+        {
             playerAnimator.SetTrigger(PlayerControlsManager.Fire);
+            arcShotStarted = true;
+        }
+    }
+
+    void MakePlayerJump()
+    {
+
+    }
+
+    void MakePlayerFall()
+    {
+
     }
 
     void ShootArc()
@@ -100,5 +117,6 @@ public class PlayerController : MonoBehaviour
 
         Rigidbody arcRigidBody = arcAttackEffect.GetComponent<Rigidbody>();
         arcRigidBody.velocity = gameObject.transform.forward * arcAttackMovementSpeed * Time.deltaTime;
+        arcShotStarted = false;
     }
 }
