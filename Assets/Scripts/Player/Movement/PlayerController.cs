@@ -22,15 +22,18 @@ public class PlayerController : MonoBehaviour
     private bool arcShotStarted;
     private bool isFalling;
     private bool jumped;
+    private bool forwardMovementKeyRemoved;
 
     // Use this for initialization
     void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
+
         arcShotStarted = false;
         isFalling = false;
         jumped = false;
+        forwardMovementKeyRemoved = false;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,9 +82,16 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool(PlayerControlsManager.MoveParam, true);
             playerRB.velocity = gameObject.transform.forward * moveZ * movementSpeed * Time.deltaTime;
+            forwardMovementKeyRemoved = false;
         }
         else
             playerAnimator.SetBool(PlayerControlsManager.MoveParam, false);
+
+        if (moveZ == 0 && !forwardMovementKeyRemoved)
+        {
+            playerRB.velocity = Vector3.zero;
+            forwardMovementKeyRemoved = true;
+        }
 
         float moveX = Input.GetAxis(PlayerControlsManager.Horizontal);
         playerRB.transform.Rotate(Vector3.up * moveX * rotationSpeed * Time.deltaTime);
