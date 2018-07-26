@@ -18,9 +18,10 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRB;
     private Animator playerAnimator;
-    private bool arcShotStarted;
 
+    private bool arcShotStarted;
     private bool isFalling;
+    private bool jumped;
 
     // Use this for initialization
     void Start()
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         arcShotStarted = false;
         isFalling = false;
+        jumped = false;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -57,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        if (isFalling || jumped)
+            return;
+
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack) ||
         playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack) ||
         playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
@@ -81,9 +89,6 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerAttack()
     {
-        if (isFalling)
-            return;
-
         if (Input.GetMouseButton(0))
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
@@ -124,10 +129,11 @@ public class PlayerController : MonoBehaviour
 
     void MakePlayerJump()
     {
-        if (Input.GetKeyDown(PlayerControlsManager.JumpKeyboard) && !isFalling)
+        if (Input.GetKeyDown(PlayerControlsManager.JumpKeyboard) && !isFalling && !jumped)
         {
             playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
             playerAnimator.SetTrigger(PlayerControlsManager.JumpParam);
+            jumped = true;
         }
     }
 
@@ -139,6 +145,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.Play(PlayerControlsManager.FallAnimation);
             playerAnimator.SetBool(PlayerControlsManager.FallParam, true);
             isFalling = true;
+            jumped = false;
         }
     }
 
