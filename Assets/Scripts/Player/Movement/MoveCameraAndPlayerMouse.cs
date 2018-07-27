@@ -15,7 +15,7 @@ public class MoveCameraAndPlayerMouse : MonoBehaviour
     void RotatePlayerAndMoveCamera()
     {
         float mouseX = Input.GetAxis(PlayerControlsManager.MouseX);
-
-        gameObject.transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed * Time.deltaTime);
+        PlayerData.yaw += mouseX * horizontalRotationSpeed * Time.deltaTime;
+        gameObject.transform.eulerAngles = Vector3.up * PlayerData.yaw;
     }
 }

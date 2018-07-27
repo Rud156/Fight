@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
         jumped = false;
         forwardMovementKeyRemoved = false;
 
+        PlayerData.yaw = gameObject.transform.rotation.eulerAngles.y;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -94,7 +96,9 @@ public class PlayerController : MonoBehaviour
         }
 
         float moveX = Input.GetAxis(PlayerControlsManager.Horizontal);
-        playerRB.transform.Rotate(Vector3.up * moveX * rotationSpeed * Time.deltaTime);
+        PlayerData.yaw += moveX * rotationSpeed * Time.deltaTime;
+        gameObject.transform.eulerAngles = Vector3.up * PlayerData.yaw;
+
     }
 
     void MakePlayerAttack()
