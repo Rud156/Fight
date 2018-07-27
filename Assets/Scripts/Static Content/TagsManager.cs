@@ -9,4 +9,5 @@ public class TagsManager
     public const string CircularSpawn = "Circular Spawn";
     public const string CollisionSpawn = "Collision Spawn";
     public const string JumpGround = "Jump Ground";
+    public const string PlayerBody = "Player Body";
 }

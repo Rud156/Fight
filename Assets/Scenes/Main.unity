@@ -430,7 +430,7 @@ Transform:
   m_GameObject: {fileID: 336152747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.011, y: 0.831, z: 1.24}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426630702}
   m_RootOrder: 3
@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 1109689502}
   m_Layer: 0
   m_Name: Mesh_Ninja
-  m_TagString: Untagged
+  m_TagString: Player Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1380,6 +1380,7 @@ GameObject:
   - component: {fileID: 1426630707}
   - component: {fileID: 1426630708}
   - component: {fileID: 1426630709}
+  - component: {fileID: 1426630710}
   m_Layer: 0
   m_Name: Ninja Warrior
   m_TagString: Player
@@ -1427,7 +1428,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1426630699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -16.4}
+  m_LocalPosition: {x: 0, y: 2, z: 2.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1109689501}
@@ -1435,6 +1436,7 @@ Transform:
   - {fileID: 1806465318}
   - {fileID: 336152748}
   - {fileID: 1760184426}
+  - {fileID: 1763220740}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1596,8 +1598,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDistance: 10
-  dashEffect: {fileID: 1648579617381568, guid: caefd217af695d144b1fdf7294384872, type: 2}
+  dashTrail: {fileID: 1648579617381568, guid: caefd217af695d144b1fdf7294384872, type: 2}
+  dashBody: {fileID: 1648579617381568, guid: 58a586659fe67314e8d21d6d14fc2c15, type: 2}
   dashSpawnPoint: {fileID: 1760184425}
+--- !u!114 &1426630710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426630699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb178cf3ca4ff140b33b8d3881cf900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordTrailEffect: {fileID: 1816876505460810, guid: 14506fdaea5e1e14aba622d97aa94e35,
+    type: 2}
+  swordEffectInstantiationPosition: {fileID: 1763220739}
+  defaultRotation: -45
 --- !u!1 &1495028725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,11 +1900,95 @@ Transform:
   m_GameObject: {fileID: 1760184425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: -0.25}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426630702}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1763220739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1763220740}
+  - component: {fileID: 1763220743}
+  - component: {fileID: 1763220742}
+  - component: {fileID: 1763220741}
+  m_Layer: 0
+  m_Name: Sword Trail Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763220740
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763220739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.011, y: 1.2, z: 1.2399998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1426630702}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1763220741
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763220739}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1763220742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763220739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1763220743
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763220739}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1779611255
 GameObject:
   m_ObjectHideFlags: 0

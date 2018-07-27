@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198867904268204576}
   - component: {fileID: 199456407012937842}
   m_Layer: 0
-  m_Name: Dash
+  m_Name: Dash Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 2130172303

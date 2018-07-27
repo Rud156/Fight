@@ -8,7 +8,8 @@ public class DashPlayer : MonoBehaviour
 
     [Header("Dash Requirements")]
     public float dashDistance = 10;
-    public GameObject dashEffect;
+    public GameObject dashTrail;
+    public GameObject dashBody;
     public GameObject dashSpawnPoint;
 
     private Animator playerAnimator;
@@ -40,6 +41,11 @@ public class DashPlayer : MonoBehaviour
                 gameObject.transform.forward * (hit.distance - 1);
 
         gameObject.transform.position = destination;
-        Instantiate(dashEffect, dashSpawnPoint.transform.position, gameObject.transform.rotation);
+        Instantiate(dashTrail, dashSpawnPoint.transform.position, gameObject.transform.rotation);
+
+        Instantiate(dashBody,
+            new Vector3(dashSpawnPoint.transform.position.x, dashSpawnPoint.transform.position.y - 0.8f,
+                dashSpawnPoint.transform.position.z),
+            dashBody.transform.rotation);
     }
 }
