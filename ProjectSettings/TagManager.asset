@@ -10,6 +10,8 @@ TagManager:
   - Sphere Spawn
   - Missile
   - Player Body
+  - Sword Contact
+  - Foot Contact
   layers:
   - Default
   - TransparentFX
