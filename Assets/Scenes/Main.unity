@@ -1720,7 +1720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169404332}
   m_Layer: 0
-  m_Name: Mountain Holders
+  m_Name: Mountain Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
