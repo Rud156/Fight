@@ -12,8 +12,11 @@ public class DashPlayer : MonoBehaviour
     public GameObject dashBody;
     public GameObject dashSpawnPoint;
 
-    private Animator playerAnimator;
+    [Header("Dash Audio")]
+    public AudioSource audioSource;
+    public AudioClip dash;
 
+    private Animator playerAnimator;
 
     // Use this for initialization
     void Start()
@@ -40,6 +43,8 @@ public class DashPlayer : MonoBehaviour
             destination = gameObject.transform.position +
                 gameObject.transform.forward * (hit.distance - 1);
 
+        audioSource.clip = dash;
+        audioSource.Play();
         gameObject.transform.position = destination;
         Instantiate(dashTrail, dashSpawnPoint.transform.position, gameObject.transform.rotation);
 

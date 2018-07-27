@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class PlayerSound : MonoBehaviour
 {
+    [Header("Audio Source")]
+    public AudioSource audioSource;
+
     [Header("Audio Clips")]
     public AudioClip footFall;
     public AudioClip land;
@@ -12,14 +14,6 @@ public class PlayerSound : MonoBehaviour
     public AudioClip swordSlash;
     public AudioClip kick;
     public AudioClip shootPowerUp;
-
-    private AudioSource audioSource;
-
-    // Use this for initialization
-    void Start()
-    {
-        audioSource = gameObject.GetComponent<AudioSource>();
-    }
 
     void FootL()
     {
