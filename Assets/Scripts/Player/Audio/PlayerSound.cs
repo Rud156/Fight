@@ -5,6 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerSound : MonoBehaviour
 {
+    [Header("Audio Clips")]
+    public AudioClip footFall;
+    public AudioClip land;
+    public AudioClip jump;
+    public AudioClip swordSlash;
+    public AudioClip kick;
+    public AudioClip shootPowerUp;
 
     private AudioSource audioSource;
 
@@ -16,11 +23,43 @@ public class PlayerSound : MonoBehaviour
 
     void FootL()
     {
-        print("Left Foot Hit");
+        audioSource.clip = footFall;
+        audioSource.Play();
     }
 
     void FootR()
     {
-        print("Right Foot Hit");
+        audioSource.clip = footFall;
+        audioSource.Play();
+    }
+
+    void Land()
+    {
+        audioSource.clip = land;
+        audioSource.Play();
+    }
+
+    void Jump()
+    {
+        audioSource.clip = jump;
+        audioSource.Play();
+    }
+
+    void SwordSlash()
+    {
+        audioSource.clip = swordSlash;
+        audioSource.Play();
+    }
+
+    void Kick()
+    {
+        audioSource.clip = kick;
+        audioSource.Play();
+    }
+
+    void ShootPowerUp()
+    {
+        audioSource.clip = shootPowerUp;
+        audioSource.Play();
     }
 }

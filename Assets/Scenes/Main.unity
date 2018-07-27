@@ -1870,10 +1870,10 @@ GameObject:
   - component: {fileID: 1426630700}
   - component: {fileID: 1426630704}
   - component: {fileID: 1426630706}
+  - component: {fileID: 1426630708}
   - component: {fileID: 1426630703}
   - component: {fileID: 1426630705}
   - component: {fileID: 1426630707}
-  - component: {fileID: 1426630708}
   - component: {fileID: 1426630709}
   - component: {fileID: 1426630710}
   m_Layer: 0
@@ -1987,8 +1987,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2026,7 +2026,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2044,7 +2044,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2081,6 +2081,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc814ef6ef2db94cbe7b62f22aef4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footFall: {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
+  land: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  jump: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
+  swordSlash: {fileID: 8300000, guid: 0bb0450277d9ef04fac18fa3ceafeecf, type: 3}
+  kick: {fileID: 8300000, guid: 4a7faa02064b2c94386ebf830d3e8109, type: 3}
+  shootPowerUp: {fileID: 8300000, guid: e48d97bd4d1a40a45a13de2b6afc4d7f, type: 3}
 --- !u!114 &1426630709
 MonoBehaviour:
   m_ObjectHideFlags: 0
