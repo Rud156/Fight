@@ -11,31 +11,22 @@ public class SpawnSphereEffect : MonoBehaviour
     public float affectRadius = 5f;
     public float damagePower = 10f;
 
-    /// <summary>
-    /// OnCollisionEnter is called when this collider/rigidbody has begun
-    /// touching another rigidbody/collider.
-    /// </summary>
-    /// <param name="other">The Collision data associated with this collision.</param>
-    void OnTriggerEnter(Collider other)
+
+    public void SpawnSphereEffectAtPoint(Vector3 position)
     {
-        Rigidbody target = other.GetComponent<Rigidbody>();
-
-        if (!target || !other.CompareTag(TagsManager.Enemy))
-            return;
-
-        Vector3 position = gameObject.transform.position;
-
         Instantiate(sphereEffect, position, sphereEffect.transform.rotation);
+
         Collider[] colliders = Physics.OverlapSphere(position, affectRadius);
 
         foreach (Collider collider in colliders)
         {
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (!rb || !rb.CompareTag(TagsManager.Enemy))
-                return;
+                continue;
 
             rb.AddExplosionForce(damagePower, position, affectRadius, 3f, ForceMode.Impulse);
         }
+
         Destroy(gameObject);
     }
 }

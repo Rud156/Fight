@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Arc Attack Effect")]
     public GameObject arcEffect;
-    public float arcAttackMovementSpeed;
+    public float arcAttackMovementSpeed = 3000;
     public GameObject arcInstantionPosition;
 
     private Rigidbody playerRB;
