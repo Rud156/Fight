@@ -2143,25 +2143,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198405589821234036, guid: 4d3047272de4cbe47b0e69380f167378,
-        type: 2}
-      propertyPath: ShapeModule.radius.value
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 198405589821234036, guid: 4d3047272de4cbe47b0e69380f167378,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1400746449
-      objectReference: {fileID: 0}
-    - target: {fileID: 198405589821234036, guid: 4d3047272de4cbe47b0e69380f167378,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1971266068887862, guid: 4d3047272de4cbe47b0e69380f167378, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d3047272de4cbe47b0e69380f167378, type: 2}
   m_IsPrefabParent: 0
