@@ -17,6 +17,7 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
     public Slider minionHealthSlider;
     public Image minionHealthFiller;
 
+    private Animator minionAnimator;
     private float currentMinionHealth;
 
     /// <summary>
@@ -25,6 +26,7 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
     /// </summary>
     void Start()
     {
+        minionAnimator = gameObject.GetComponent<Animator>();
         currentMinionHealth = maxMinionHealth;
     }
 
@@ -54,9 +56,15 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(TagsManager.SwordContact))
+        {
             currentMinionHealth -= Random.Range(20, 40);
+            minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
+        }
 
         if (other.CompareTag(TagsManager.FootContact))
+        {
             currentMinionHealth -= Random.Range(10, 20);
+            minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
+        }
     }
 }

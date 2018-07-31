@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     public float arcAttackMovementSpeed = 3000;
     public GameObject arcInstantionPosition;
 
+    [Header("Sword and Foot Colliders")]
+    public GameObject swordContact;
+    public GameObject footContact;
+
     private Rigidbody playerRB;
     private Animator playerAnimator;
 
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EnableAndDisableColliders();
         MovePlayer();
         MakePlayerAttack();
         MakePlayerShootArc();
@@ -63,6 +68,19 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetBool(PlayerControlsManager.FallParam, false);
         isFalling = false;
+    }
+
+    void EnableAndDisableColliders()
+    {
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
+            footContact.SetActive(true);
+        else
+            footContact.SetActive(false);
+
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack))
+            swordContact.SetActive(true);
+        else
+            swordContact.SetActive(false);
     }
 
     void MovePlayer()
