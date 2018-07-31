@@ -44,7 +44,12 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
 
         if (currentHealthLeft <= 0)
         {
-            Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
+            GameObject deathEffectInstance =
+                Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
+            ParticleSystem particleSystem = deathEffectInstance.GetComponent<ParticleSystem>();
+            ParticleSystem.CollisionModule collision = particleSystem.collision;
+            collision.SetPlane(0, GameObject.FindGameObjectWithTag(TagsManager.Ground).transform);
+
             Destroy(gameObject);
         }
     }

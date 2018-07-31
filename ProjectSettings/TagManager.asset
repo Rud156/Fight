@@ -12,6 +12,7 @@ TagManager:
   - Player Body
   - Sword Contact
   - Foot Contact
+  - Ground
   layers:
   - Default
   - TransparentFX
