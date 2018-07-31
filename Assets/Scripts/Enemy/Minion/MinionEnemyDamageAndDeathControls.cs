@@ -52,6 +52,7 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
 
             // Destroy(gameObject);
             minionAnimator.SetBool(EnemyControlsManager.EnemyDead, true);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

@@ -43,15 +43,20 @@ public class MinionEnemyController : MonoBehaviour
             }
         }
 
-        Vector3 lookPosition = player.transform.position - gameObject.transform.position;
-        lookPosition.y = 0;
+        bool enemyDead = enemyAnimator.GetBool(EnemyControlsManager.EnemyDead);
 
-        Quaternion rotation = Quaternion.LookRotation(lookPosition);
-        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
-            rotation, rotationRate * Time.deltaTime);
+        if (!enemyDead)
+        {
+            Vector3 lookPosition = player.transform.position - gameObject.transform.position;
+            lookPosition.y = 0;
 
-        enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
-        agent.SetDestination(player.transform.position);
+            Quaternion rotation = Quaternion.LookRotation(lookPosition);
+            gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
+                rotation, rotationRate * Time.deltaTime);
+
+            enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
+            agent.SetDestination(player.transform.position);
+        }
     }
 
     IEnumerator AttackPlayer()
