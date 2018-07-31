@@ -1,4 +1,5 @@
 * text=auto
+
 # Unity files
 *.meta -text -merge=unityamlmerge
 *.unity -text -merge=unityamlmerge
