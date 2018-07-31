@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a574233dbb37e994f8db6a0be8b7ff4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMinionHealth: 100
+  maxMinionHealth: 40
   deathEffect: {fileID: 1079056891396828, guid: ba453219fb3bfdd40a2171f34984f994,
     type: 2}
   minHealthColor: {r: 1, g: 0, b: 0, a: 1}
