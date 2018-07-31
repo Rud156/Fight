@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MinionEnemyController : MonoBehaviour
 {
     public float animationWaitTime = 1.6f;
+    public float rotationRate = 0.7f;
 
     private GameObject player;
     private NavMeshAgent agent;
@@ -41,6 +42,13 @@ public class MinionEnemyController : MonoBehaviour
                 }
             }
         }
+
+        Vector3 lookPosition = player.transform.position - gameObject.transform.position;
+        lookPosition.y = 0;
+
+        Quaternion rotation = Quaternion.LookRotation(lookPosition);
+        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
+            rotation, rotationRate * Time.deltaTime);
 
         enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
         agent.SetDestination(player.transform.position);
