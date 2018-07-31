@@ -44,13 +44,14 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
 
         if (currentHealthLeft <= 0)
         {
-            GameObject deathEffectInstance =
-                Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
-            ParticleSystem particleSystem = deathEffectInstance.GetComponent<ParticleSystem>();
-            ParticleSystem.CollisionModule collision = particleSystem.collision;
-            collision.SetPlane(0, GameObject.FindGameObjectWithTag(TagsManager.Ground).transform);
+            // GameObject deathEffectInstance =
+            //     Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
+            // ParticleSystem particleSystem = deathEffectInstance.GetComponent<ParticleSystem>();
+            // ParticleSystem.CollisionModule collision = particleSystem.collision;
+            // collision.SetPlane(0, GameObject.FindGameObjectWithTag(TagsManager.Ground).transform);
 
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            minionAnimator.SetBool(EnemyControlsManager.EnemyDead, true);
         }
     }
 
@@ -71,5 +72,10 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
             currentMinionHealth -= Random.Range(10, 20);
             minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
         }
+    }
+
+    void Dead()
+    {
+        Destroy(gameObject);
     }
 }

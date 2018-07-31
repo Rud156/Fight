@@ -134,24 +134,38 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Errors found in
+      old project file will be treated as a warnings. Configuration mis-match will
+      be ignored, but current Configuration needs to be fixed:\n\tTransform 'B_Spine2'
+      not found in HumanDescription.\nCopied Avatar Rig Configuration mis-match. Bone
+      length in copied configuration does not match position in animation file:\n\t'B_L_Thigh'
+      : position error = 22.531918 mm\n\t'B_L_Calf' : position error = 20.993336 mm\n\t'B_L_Foot'
+      : position error = 23.192602 mm\n\t'B_L_Toe0' : position error = 15.137506 mm\n\t'B_R_Thigh'
+      : position error = 22.531918 mm\n\t'B_R_Calf' : position error = 20.993179 mm\n\t'B_R_Foot'
+      : position error = 23.192640 mm\n\t'B_R_Toe0' : position error = 15.137569 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
       improve retargeting quality.\n\t'B_Spine' has translation animation that will
       be discarded.\n\t'B_Spine2' has translation animation that will be discarded.\n\t'B_Spine2'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftUpperArm
-      average position error 40.1 mm and maximum position error 89.9 mm at time 0:23
-      (59.0%) Frame 23\n\tLeftLowerArm average position error 37.4 mm and maximum
-      position error 66.7 mm at time 0:23 (59.0%) Frame 23\n\tLeftHand average position
-      error 35.0 mm and maximum position error 52.8 mm at time 0:18 (46.2%) Frame
-      18\n\tRightUpperArm average position error 38.7 mm and maximum position error
-      84.8 mm at time 0:17 (43.6%) Frame 17\n\tRightLowerArm average position error
-      35.7 mm and maximum position error 68.4 mm at time 0:23 (59.0%) Frame 23\n\tRightHand
-      average position error 36.2 mm and maximum position error 66.3 mm at time 0:23
-      (59.0%) Frame 23\n\tHead average position error 67.3 mm and maximum position
-      error 159.4 mm at time 0:24 (61.5%) Frame 24\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftLowerLeg
+      average position error 27.4 mm and maximum position error 31.5 mm at time 0:15
+      (38.5%) Frame 15\n\tLeftFoot average position error 38.0 mm and maximum position
+      error 42.8 mm at time 0:22 (56.4%) Frame 22\n\tRightLowerLeg average position
+      error 24.4 mm and maximum position error 28.4 mm at time 0:26 (66.7%) Frame
+      26\n\tRightFoot average position error 37.4 mm and maximum position error 45.2
+      mm at time 0:26 (66.7%) Frame 26\n\tLeftUpperArm average position error 175.5
+      mm and maximum position error 194.3 mm at time 0:25 (64.1%) Frame 25\n\tLeftLowerArm
+      average position error 175.6 mm and maximum position error 201.2 mm at time
+      0:28 (71.8%) Frame 28\n\tLeftHand average position error 196.7 mm and maximum
+      position error 228.0 mm at time 0:20 (51.3%) Frame 20\n\tRightUpperArm average
+      position error 181.0 mm and maximum position error 207.4 mm at time 0:20 (51.3%)
+      Frame 20\n\tRightLowerArm average position error 176.1 mm and maximum position
+      error 206.2 mm at time 0:20 (51.3%) Frame 20\n\tRightHand average position error
+      205.3 mm and maximum position error 262.9 mm at time 0:28 (71.8%) Frame 28\n\tHead
+      average position error 84.9 mm and maximum position error 156.4 mm at time 0:23
+      (59.0%) Frame 23\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     animationCompression: 3
@@ -185,7 +199,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.99148935
+        functionName: Dead
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
