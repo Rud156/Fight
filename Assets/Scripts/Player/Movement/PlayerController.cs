@@ -11,11 +11,6 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed;
     public float jumpSpeed;
 
-    [Header("Arc Attack Effect")]
-    public GameObject arcEffect;
-    public float arcAttackMovementSpeed = 3000;
-    public GameObject arcInstantionPosition;
-
     [Header("Sword and Foot Colliders")]
     public GameObject swordContact;
     public GameObject footContact;
@@ -23,9 +18,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRB;
     private Animator playerAnimator;
 
-    private bool arcShotStarted;
     private bool isFalling;
     private bool jumped;
+
     private bool forwardMovementKeyRemoved;
 
     // Use this for initialization
@@ -34,9 +29,9 @@ public class PlayerController : MonoBehaviour
         playerRB = gameObject.GetComponent<Rigidbody>();
         playerAnimator = gameObject.GetComponent<Animator>();
 
-        arcShotStarted = false;
         isFalling = false;
         jumped = false;
+
         forwardMovementKeyRemoved = false;
 
         PlayerData.yaw = gameObject.transform.rotation.eulerAngles.y;
@@ -49,9 +44,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         EnableAndDisableColliders();
-        MovePlayer();
+
         MakePlayerAttack();
-        MakePlayerShootArc();
+
+        MovePlayer();
+
         MakePlayerJump();
         MakePlayerFall();
     }
@@ -149,16 +146,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MakePlayerShootArc()
-    {
-        if (Input.GetMouseButtonDown(1) &&
-        !arcShotStarted)
-        {
-            playerAnimator.SetTrigger(PlayerControlsManager.FireParam);
-            arcShotStarted = true;
-        }
-    }
-
     void MakePlayerJump()
     {
         if (Input.GetKeyDown(PlayerControlsManager.JumpKeyboard) && !isFalling && !jumped)
@@ -179,15 +166,5 @@ public class PlayerController : MonoBehaviour
             isFalling = true;
             jumped = false;
         }
-    }
-
-    void ShootArc()
-    {
-        GameObject arcAttackEffect = Instantiate(arcEffect, arcInstantionPosition.transform.position,
-                gameObject.transform.rotation) as GameObject;
-
-        Rigidbody arcRigidBody = arcAttackEffect.GetComponent<Rigidbody>();
-        arcRigidBody.velocity = gameObject.transform.forward * arcAttackMovementSpeed * Time.deltaTime;
-        arcShotStarted = false;
     }
 }

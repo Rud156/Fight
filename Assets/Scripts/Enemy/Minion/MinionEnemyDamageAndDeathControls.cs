@@ -36,6 +36,7 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
         float maxHealth = maxMinionHealth;
         float currentHealthLeft = currentMinionHealth;
         float healthRatio = currentHealthLeft / maxHealth;
+
         if (healthRatio <= 0.5)
             minionHealthFiller.color = Color.Lerp(minHealthColor, halfHealthColor, healthRatio * 2);
         else
@@ -44,13 +45,6 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
 
         if (currentHealthLeft <= 0)
         {
-            // GameObject deathEffectInstance =
-            //     Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
-            // ParticleSystem particleSystem = deathEffectInstance.GetComponent<ParticleSystem>();
-            // ParticleSystem.CollisionModule collision = particleSystem.collision;
-            // collision.SetPlane(0, GameObject.FindGameObjectWithTag(TagsManager.Ground).transform);
-
-            // Destroy(gameObject);
             minionAnimator.SetBool(EnemyControlsManager.EnemyDead, true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
