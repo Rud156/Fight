@@ -5,8 +5,13 @@ using UnityEngine.AI;
 
 public class MinionEnemyController : MonoBehaviour
 {
+    [Header("General Stats")]
     public float animationWaitTime = 1.6f;
     public float rotationRate = 0.7f;
+
+    [Header("Contact Points")]
+    public GameObject leftHandContact;
+    public GameObject rightHandContact;
 
     private GameObject player;
     private NavMeshAgent agent;
@@ -57,12 +62,23 @@ public class MinionEnemyController : MonoBehaviour
             enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
             agent.SetDestination(player.transform.position);
         }
+
+        if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName(EnemyControlsManager.MinionAttackAnimation))
+        {
+            leftHandContact.SetActive(true);
+            rightHandContact.SetActive(true);
+        }
+        else
+        {
+            leftHandContact.SetActive(false);
+            rightHandContact.SetActive(false);
+        }
     }
 
     IEnumerator AttackPlayer()
     {
         coroutinePlaying = true;
-        enemyAnimator.SetTrigger(EnemyControlsManager.MinionAttack);
+        enemyAnimator.SetTrigger(EnemyControlsManager.MinionAttackParam);
         yield return new WaitForSeconds(animationWaitTime);
         coroutinePlaying = false;
     }

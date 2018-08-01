@@ -9,7 +9,8 @@ public class EnemyControlsManager
     public const string EnemyDead = "EnemyDead";
 
     // Minion Enemy
-    public const string MinionAttack = "MinionAttack";
-    public const string MinionHit = "MinionHit";
+    public const string MinionAttackParam = "MinionAttack";
+    public const string MinionHitParam = "MinionHit";
+    public const string MinionAttackAnimation = "Attack";
 
 }

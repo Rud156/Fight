@@ -5,12 +5,27 @@ using UnityEngine.UI;
 
 public class DisplayPlayerHealth : MonoBehaviour
 {
-    public Text playerHealthText;
+    [Header("Health")]
+    public Color minHealthColor = Color.red;
+    public Color halfHealthColor = Color.yellow;
+    public Color maxHealthColor = Color.green;
+    public Slider healthSlider;
+    public Image healthFiller;
 
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// LateUpdate is called every frame, if the Behaviour is enabled.
+    /// It is called after all Update functions have been called.
+    /// </summary>
+    void LateUpdate()
     {
-        playerHealthText.text = "Health: " + PlayerData.damageTaken;
+        float maxHealth = PlayerData.maxHealth;
+        float currentHealthLeft = PlayerData.currentHealthLeft;
+        float healthRatio = currentHealthLeft / maxHealth;
+
+        if (healthRatio <= 0.5)
+            healthFiller.color = Color.Lerp(minHealthColor, halfHealthColor, healthRatio * 2);
+        else
+            healthFiller.color = Color.Lerp(halfHealthColor, maxHealthColor, (healthRatio - 0.5f) * 2);
+        healthSlider.value = healthRatio;
     }
 }

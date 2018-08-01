@@ -1923,6 +1923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationWaitTime: 1.6
   rotationRate: 50
+  leftHandContact: {fileID: 1751912248042230}
+  rightHandContact: {fileID: 1302656908234832}
 --- !u!114 &114434806343213096
 MonoBehaviour:
   m_ObjectHideFlags: 1

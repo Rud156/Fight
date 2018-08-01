@@ -17,7 +17,7 @@ public class DamagePlayerOnHandContact : MonoBehaviour
         if (!playerRb || !other.CompareTag(TagsManager.Player))
             return;
 
-        PlayerData.damageTaken += damageAmount;
+        PlayerData.currentHealthLeft -= damageAmount;
     }
 
 }

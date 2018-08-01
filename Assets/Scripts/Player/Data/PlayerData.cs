@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData  {
-	public static float yaw;
+public class PlayerData
+{
+    public static float yaw;
 
-	public static float damageTaken = 0;
+    public const float maxHealth = 250;
+    public static float currentHealthLeft = 250;
 }
