@@ -58,13 +58,19 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
     {
         if (other.CompareTag(TagsManager.SwordContact))
         {
-            currentMinionHealth -= Random.Range(20, 40);
+            currentMinionHealth -= DamageRateManager.GetSwordContactDamage();
             minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
         }
 
         if (other.CompareTag(TagsManager.FootContact))
         {
-            currentMinionHealth -= Random.Range(10, 20);
+            currentMinionHealth -= DamageRateManager.GetFootContactDamage();
+            minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
+        }
+
+        if (other.CompareTag(TagsManager.SphereSpawn))
+        {
+            currentMinionHealth -= DamageRateManager.GetArcContactDamage();
             minionAnimator.SetTrigger(EnemyControlsManager.MinionHit);
         }
     }

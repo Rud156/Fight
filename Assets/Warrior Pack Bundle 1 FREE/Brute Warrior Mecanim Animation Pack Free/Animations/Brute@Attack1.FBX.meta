@@ -192,7 +192,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.36820167
-        functionName: ShootArc
+        functionName: InstantiateArc
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

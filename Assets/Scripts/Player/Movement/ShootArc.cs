@@ -69,6 +69,8 @@ public class ShootArc : MonoBehaviour
 
         Rigidbody arcRigidBody = arcAttackEffect.GetComponent<Rigidbody>();
         arcRigidBody.velocity = gameObject.transform.forward * arcAttackMovementSpeed * Time.deltaTime;
+
         arcShotStarted = false;
+        currentFrameCount = 0;
     }
 }
