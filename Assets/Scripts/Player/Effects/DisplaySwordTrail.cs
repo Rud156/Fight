@@ -24,5 +24,7 @@ public class DisplaySwordTrail : MonoBehaviour
             float rotation = defaultRotation + gameObject.transform.rotation.eulerAngles.y;
             main.startRotation = Mathf.Deg2Rad * rotation;
         }
+
+        swordTrailInstance.transform.SetParent(gameObject.transform);
     }
 }

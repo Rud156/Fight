@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
         float yVelocity = playerRB.velocity.y;
         if (yVelocity < -1 && !isFalling)
         {
-            playerAnimator.Play(PlayerControlsManager.FallAnimation);
             playerAnimator.SetBool(PlayerControlsManager.FallParam, true);
             isFalling = true;
             jumped = false;

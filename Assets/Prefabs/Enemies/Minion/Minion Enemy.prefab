@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 114434806343213096}
   m_Layer: 0
   m_Name: Hand Contact
-  m_TagString: Untagged
+  m_TagString: Hand Contact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: 114806074994588578}
   m_Layer: 0
   m_Name: Hand Contact
-  m_TagString: Untagged
+  m_TagString: Hand Contact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

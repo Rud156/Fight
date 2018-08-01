@@ -24,11 +24,12 @@ public class PlayerControlsManager
     public const string RunAnimation = "Run";
     public const string FallAnimation = "Fall";
 
-
     // Animator Values
     public const string MoveParam = "Move";
     public const string AttackParam = "Attack";
     public const string FireParam = "Fire Arc";
     public const string JumpParam = "Jump";
     public const string FallParam = "Falling";
+    public const string HitParam = "Hit";
+    public const string DeadParam = "Dead";
 }

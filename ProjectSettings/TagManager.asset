@@ -13,6 +13,7 @@ TagManager:
   - Sword Contact
   - Foot Contact
   - Ground
+  - Hand Contact
   layers:
   - Default
   - TransparentFX
