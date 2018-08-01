@@ -1884,7 +1884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enclosingBoxCollider: {fileID: 580744067}
   minion: {fileID: 1782719091290434, guid: 3665c0652f6b76840aaea0ab3af7548c, type: 2}
-  spawnTime: 5
+  spawnTime: 7
+  player: {fileID: 1426630699}
+  distanceFromPlayer: 50
 --- !u!1 &631239346
 GameObject:
   m_ObjectHideFlags: 0

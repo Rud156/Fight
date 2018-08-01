@@ -5,9 +5,14 @@ using UnityEngine;
 public class MinionSpawner : MonoBehaviour
 {
 
+    [Header("Spawner Data")]
     public BoxCollider enclosingBoxCollider;
     public GameObject minion;
     public float spawnTime = 7f;
+
+    [Header("Player")]
+    public GameObject player;
+    public float distanceFromPlayer = 30f;
 
     private Coroutine coroutine;
 
@@ -38,6 +43,15 @@ public class MinionSpawner : MonoBehaviour
                 0,
                 Random.Range(-enclosingBoxCollider.bounds.extents.z, enclosingBoxCollider.bounds.extents.z)
             ) + enclosingBoxCollider.bounds.center;
+
+            float generatedDistanceFromPlayer = Vector3.Distance(randomPoint,
+                new Vector3(player.transform.position.x, 0, player.transform.position.z));
+
+            if (distanceFromPlayer > generatedDistanceFromPlayer)
+            {
+                yield return null;
+                continue;
+            }
 
             Instantiate(minion, randomPoint, minion.transform.rotation);
             yield return new WaitForSeconds(spawnTime);

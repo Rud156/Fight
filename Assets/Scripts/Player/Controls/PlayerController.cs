@@ -82,16 +82,17 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        if (isFalling || jumped)
-            return;
-
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack) ||
         playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack) ||
         playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
         {
-            playerRB.velocity = Vector3.zero;
+            float yVelocity = playerRB.velocity.y;
+            playerRB.velocity = new Vector3(0, yVelocity, 0);
             return;
         }
+
+        if (isFalling || jumped)
+            return;
 
 
         float moveZ = isFalling ? 0 : Input.GetAxis(PlayerControlsManager.Vertical);
