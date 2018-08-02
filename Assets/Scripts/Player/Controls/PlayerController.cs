@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Control Stats")]
     public float movementSpeed;
-    public float rotationSpeed;
     public float jumpSpeed;
+    public float fallThreshold = -1.5f;
+    public float movementThreshold = 1f;
 
     [Header("Sword and Foot Colliders")]
     public GameObject swordContact;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isFalling;
     private bool jumped;
+    private bool jumpedFromZeroVelocity;
 
     private bool forwardMovementKeyRemoved;
 
@@ -33,8 +35,6 @@ public class PlayerController : MonoBehaviour
         jumped = false;
 
         forwardMovementKeyRemoved = false;
-
-        PlayerData.yaw = gameObject.transform.rotation.eulerAngles.y;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetBool(PlayerControlsManager.FallParam, false);
         isFalling = false;
+        jumpedFromZeroVelocity = false;
     }
 
     void EnableAndDisableColliders()
@@ -83,23 +84,24 @@ public class PlayerController : MonoBehaviour
     void MovePlayer()
     {
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack) ||
-        playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack) ||
-        playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack))
+            playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.SecondAttack) ||
+            playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.ThirdAttack) ||
+            jumpedFromZeroVelocity)
         {
             float yVelocity = playerRB.velocity.y;
             playerRB.velocity = new Vector3(0, yVelocity, 0);
             return;
         }
 
-        if (isFalling || jumped)
-            return;
+        float moveZ = Input.GetAxis(PlayerControlsManager.Vertical);
 
-
-        float moveZ = isFalling ? 0 : Input.GetAxis(PlayerControlsManager.Vertical);
         if (moveZ > 0)
         {
             playerAnimator.SetBool(PlayerControlsManager.MoveParam, true);
-            playerRB.velocity = gameObject.transform.forward * moveZ * movementSpeed * Time.deltaTime;
+
+            Vector3 velocity = gameObject.transform.forward * moveZ * movementSpeed * Time.deltaTime;
+            playerRB.velocity = new Vector3(velocity.x, playerRB.velocity.y, velocity.z);
+
             forwardMovementKeyRemoved = false;
         }
         else
@@ -107,13 +109,11 @@ public class PlayerController : MonoBehaviour
 
         if (moveZ == 0 && !forwardMovementKeyRemoved)
         {
-            playerRB.velocity = Vector3.zero;
+            float yVelocity = playerRB.velocity.y;
+            playerRB.velocity = new Vector3(0, yVelocity, 0);
+
             forwardMovementKeyRemoved = true;
         }
-
-        float moveX = Input.GetAxis(PlayerControlsManager.Horizontal);
-        PlayerData.yaw += moveX * rotationSpeed * Time.deltaTime;
-        gameObject.transform.eulerAngles = Vector3.up * PlayerData.yaw;
 
     }
 
@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             int upcomingAttack = playerAnimator.GetInteger(PlayerControlsManager.AttackParam);
+
             if (upcomingAttack == 2 &&
                 playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(PlayerControlsManager.FirstAttack))
             {
@@ -151,6 +152,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(PlayerControlsManager.JumpKeyboard) && !isFalling && !jumped)
         {
+            Vector3 velocity = playerRB.velocity;
+
+            if (Mathf.Abs(velocity.z) <= movementThreshold)
+                jumpedFromZeroVelocity = true;
+            else
+                jumpedFromZeroVelocity = false;
+
             playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
             playerAnimator.SetTrigger(PlayerControlsManager.JumpParam);
             jumped = true;
@@ -160,7 +168,7 @@ public class PlayerController : MonoBehaviour
     void MakePlayerFall()
     {
         float yVelocity = playerRB.velocity.y;
-        if (yVelocity < -1 && !isFalling)
+        if (yVelocity < fallThreshold && !isFalling)
         {
             playerAnimator.SetBool(PlayerControlsManager.FallParam, true);
             isFalling = true;

@@ -1845,7 +1845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &580744066
 Transform:
   m_ObjectHideFlags: 0
@@ -3454,6 +3454,7 @@ GameObject:
   - component: {fileID: 1426630700}
   - component: {fileID: 1426630704}
   - component: {fileID: 1426630708}
+  - component: {fileID: 1426630713}
   - component: {fileID: 1426630703}
   - component: {fileID: 1426630705}
   - component: {fileID: 1426630707}
@@ -3494,7 +3495,7 @@ Animator:
   m_GameObject: {fileID: 1426630699}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
-  m_Controller: {fileID: 9100000, guid: a72243a5905aa6c4797762064afea335, type: 2}
+  m_Controller: {fileID: 9100000, guid: 591be21a3ac05b345a2b5be30242fa28, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3535,8 +3536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 750
-  rotationSpeed: 100
   jumpSpeed: 10
+  fallThreshold: -1.5
+  movementThreshold: 2
   swordContact: {fileID: 209958335}
   footContact: {fileID: 1140803919}
 --- !u!136 &1426630704
@@ -3674,6 +3676,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972dc887d4e082e48826401140336eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1426630713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426630699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88b334af0cd927448cc841eb7f66ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
 --- !u!1001 &1486543853
 Prefab:
   m_ObjectHideFlags: 0
