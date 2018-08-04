@@ -16,12 +16,6 @@ public class MinionSpawner : MonoBehaviour
 
     private Coroutine coroutine;
 
-    // Use this for initialization
-    void Start()
-    {
-        StartSpawn();
-    }
-
     public void StartSpawn()
     {
         coroutine = StartCoroutine(SpawnMinions());
