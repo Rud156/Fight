@@ -384,7 +384,9 @@ GameObject:
   - component: {fileID: 54415429748155470}
   - component: {fileID: 136331051341191298}
   - component: {fileID: 195033424049403532}
-  - component: {fileID: 114124534994072718}
+  - component: {fileID: 114730285913199552}
+  - component: {fileID: 114723764644948276}
+  - component: {fileID: 114962824678697806}
   m_Layer: 0
   m_Name: Boss Enemy
   m_TagString: Enemy
@@ -511,7 +513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738486747507758}
   m_LocalRotation: {x: -0, y: -0.9662643, z: -0, w: 0.25755242}
-  m_LocalPosition: {x: 12.48, y: -0.1, z: 10.91}
+  m_LocalPosition: {x: 12.48, y: 0, z: 10.91}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4756311439259548}
@@ -831,7 +833,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114124534994072718
+--- !u!114 &114723764644948276
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -839,9 +841,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738486747507758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2ba20aab7b00046a5b227998f6fb58, type: 3}
+  m_Script: {fileID: 11500000, guid: 64036dc7fb163234685e1e0764800277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  landEffect: {fileID: 1667546984162844, guid: ff279db9b7285d44aac109f1f1dbe202, type: 2}
+  heightAboveGroundToSpawn: 0.2
+  affectRadius: 5
+  damagePower: 10
+  minLaunchAngle: 30
+  maxLaunchAngle: 60
+--- !u!114 &114730285913199552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738486747507758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0964a52aeaf758f4fb8b375566fa2043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isJumping: 0
+--- !u!114 &114962824678697806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738486747507758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55649c653012924429d3c5617cc54e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.7
+  maxHealth: 500
+  fallThreshold: -1
+  minTimeCountBetweenStateChange: 3
+  maxTimeCountBetweenStateChange: 7
+  deathEffect: {fileID: 0}
+  jumpingRing: {fileID: 1336468652949830, guid: bb38439900949d34e99d68079db67c15,
+    type: 2}
+  jumpingBalls: {fileID: 1718012591189560, guid: adf99f52dfe818d4f87c9402f54820ff,
+    type: 2}
+  missile: {fileID: 0}
 --- !u!136 &136331051341191298
 CapsuleCollider:
   m_ObjectHideFlags: 1

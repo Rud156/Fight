@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BossEnemyStats))]
 public class JumpOnTarget : MonoBehaviour
 {
 
@@ -22,6 +23,7 @@ public class JumpOnTarget : MonoBehaviour
     public float maxLaunchAngle = 60f;
 
     private Rigidbody gameObjectRigidbody;
+    private BossEnemyStats enemyStats;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -30,6 +32,7 @@ public class JumpOnTarget : MonoBehaviour
     void Start()
     {
         gameObjectRigidbody = gameObject.GetComponent<Rigidbody>();
+        enemyStats = gameObject.GetComponent<BossEnemyStats>();
     }
 
     /// <summary>
@@ -39,7 +42,7 @@ public class JumpOnTarget : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if (!EnemyStats.isJumping)
+        if (!enemyStats.isJumping)
             return;
 
         if (!other.gameObject.CompareTag(TagsManager.Ground) &&
@@ -62,16 +65,16 @@ public class JumpOnTarget : MonoBehaviour
             landEffect.transform.rotation);
 
         gameObjectRigidbody.isKinematic = true;
-        EnemyStats.isJumping = false;
+        enemyStats.isJumping = false;
     }
 
     public void TriggerJump()
     {
-        if (EnemyStats.isJumping)
+        if (enemyStats.isJumping)
             return;
 
         gameObjectRigidbody.isKinematic = false;
-        EnemyStats.isJumping = true;
+        enemyStats.isJumping = true;
 
         float randomAngle = Random.Range(minLaunchAngle, maxLaunchAngle);
         gameObjectRigidbody.velocity = BallisticVelocity(randomAngle);
