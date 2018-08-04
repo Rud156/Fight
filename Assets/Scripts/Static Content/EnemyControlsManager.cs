@@ -13,4 +13,9 @@ public class EnemyControlsManager
     public const string MinionHitParam = "MinionHit";
     public const string MinionAttackAnimation = "Attack";
 
+    // Boss Enemy
+    public const string BossFallingParam = "Falling";
+    public const string BossJumpParam = "Jump";
+
+
 }

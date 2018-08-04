@@ -42,7 +42,7 @@ public class JumpOnTarget : MonoBehaviour
         if (!EnemyStats.isJumping)
             return;
 
-        if (!other.gameObject.CompareTag(TagsManager.JumpGround) ||
+        if (!other.gameObject.CompareTag(TagsManager.Ground) &&
             !other.gameObject.CompareTag(TagsManager.Player))
             return;
 
