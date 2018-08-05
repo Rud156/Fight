@@ -157,6 +157,8 @@ public class BossEnemyController : MonoBehaviour
             !other.gameObject.CompareTag(TagsManager.Ground))
             return;
 
+        jumpOnTarget.LandOnGround();
+
         currentState = EnemyState.Idle;
         agent.enabled = true;
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(BossEnemyStats))]
 public class JumpOnTarget : MonoBehaviour
 {
 
@@ -23,7 +22,6 @@ public class JumpOnTarget : MonoBehaviour
     public float maxLaunchAngle = 60f;
 
     private Rigidbody gameObjectRigidbody;
-    private BossEnemyStats enemyStats;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -32,23 +30,10 @@ public class JumpOnTarget : MonoBehaviour
     void Start()
     {
         gameObjectRigidbody = gameObject.GetComponent<Rigidbody>();
-        enemyStats = gameObject.GetComponent<BossEnemyStats>();
     }
 
-    /// <summary>
-    /// OnCollisionEnter is called when this collider/rigidbody has begun
-    /// touching another rigidbody/collider.
-    /// </summary>
-    /// <param name="other">The Collision data associated with this collision.</param>
-    void OnCollisionEnter(Collision other)
+    public void LandOnGround()
     {
-        if (!enemyStats.isJumping)
-            return;
-
-        if (!other.gameObject.CompareTag(TagsManager.Ground) &&
-            !other.gameObject.CompareTag(TagsManager.Player))
-            return;
-
         Vector3 explosionPoint = gameObject.transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPoint, affectRadius);
         foreach (Collider collider in colliders)
@@ -69,9 +54,6 @@ public class JumpOnTarget : MonoBehaviour
 
     public void TriggerJump()
     {
-        if (enemyStats.isJumping)
-            return;
-
         gameObjectRigidbody.isKinematic = false;
 
         float randomAngle = Random.Range(minLaunchAngle, maxLaunchAngle);

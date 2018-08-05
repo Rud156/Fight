@@ -5034,7 +5034,7 @@ MonoBehaviour:
   rotationRate: 0.7
   maxHealth: 500
   fallThreshold: -0.5
-  waitTimeBetweenAttacks: 0.5
+  waitTimeBetweenAttacks: 3
   minTimeCountBetweenStateChange: 3
   maxTimeCountBetweenStateChange: 7
   deathEffect: {fileID: 0}
