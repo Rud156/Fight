@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 195033424049403532}
   - component: {fileID: 114730285913199552}
   - component: {fileID: 114723764644948276}
-  - component: {fileID: 114962824678697806}
+  - component: {fileID: 114988445842412888}
   m_Layer: 0
   m_Name: Boss Enemy
   m_TagString: Enemy
@@ -712,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933625002856874}
   m_LocalRotation: {x: -0, y: 0.000000014901161, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2516, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4288510156422100}
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJumping: 0
---- !u!114 &114962824678697806
+--- !u!114 &114988445842412888
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -932,10 +932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55649c653012924429d3c5617cc54e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.7
+  rotationRate: 0.7
   maxHealth: 500
-  fallThreshold: -1
-  waitTimeBetweenAttacks: 0.5
+  fallThreshold: -0.5
+  waitTimeBetweenAttacks: 3
   minTimeCountBetweenStateChange: 3
   maxTimeCountBetweenStateChange: 7
   deathEffect: {fileID: 0}
@@ -943,7 +943,7 @@ MonoBehaviour:
     type: 2}
   jumpingBalls: {fileID: 1718012591189560, guid: adf99f52dfe818d4f87c9402f54820ff,
     type: 2}
-  missile: {fileID: 0}
+  missile: {fileID: 1732946225236264, guid: afa1267c851acb64c9d04c7d6f842a10, type: 2}
   ringAndBallLaunchPosition: {fileID: 1933625002856874}
   missileLaunchPosition: {fileID: 1055892419388320}
 --- !u!136 &136331051341191298
