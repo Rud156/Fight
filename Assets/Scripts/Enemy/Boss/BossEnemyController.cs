@@ -13,6 +13,7 @@ public class BossEnemyController : MonoBehaviour
     public float rotationRate = 0.7f;
     public int maxHealth = 5000;
     public float fallThreshold = -1f;
+    public float launchFromHeightAboveGround = 1f;
     public float waitTimeBetweenAttacks = 0.5f;
     public int minTimeCountBetweenStateChange = 3;
     public int maxTimeCountBetweenStateChange = 7;
@@ -76,7 +77,7 @@ public class BossEnemyController : MonoBehaviour
         currentTimeStateChange = 0;
 
         timesFunctionCalled = 0;
-        currentState = EnemyState.Idle;
+        UpdateState(EnemyState.Idle);
     }
 
     /// <summary>
@@ -85,7 +86,7 @@ public class BossEnemyController : MonoBehaviour
     void Update()
     {
         if (currentHealth <= 0 && currentState != EnemyState.Dead)
-            currentState = EnemyState.Dead;
+            UpdateState(EnemyState.Dead);
 
         MakeEnemyFall();
 
@@ -98,6 +99,13 @@ public class BossEnemyController : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
                 rotation, rotationRate * Time.deltaTime);
         }
+
+        // Vector3 position = gameObject.transform.position;
+        // Vector3 clampedPosition = new Vector3(position.x, Mathf.Clamp(position.y, 0.2f, 1000), position.z);
+        // if (agent.enabled)
+        //     agent.Warp(clampedPosition);
+        // else
+        //     gameObject.transform.position = clampedPosition;
 
         switch (currentState)
         {
@@ -138,7 +146,7 @@ public class BossEnemyController : MonoBehaviour
         if (currentTimeStateChange >= randomSelectedTimeStateChange &&
             currentState != EnemyState.Falling)
         {
-            currentState = EnemyState.Idle;
+            UpdateState(EnemyState.Idle);
             currentTimeStateChange = 0;
         }
     }
@@ -159,12 +167,14 @@ public class BossEnemyController : MonoBehaviour
 
         jumpOnTarget.LandOnGround();
 
-        currentState = EnemyState.Idle;
-        agent.enabled = true;
-
         currentTimeStateChange = 0;
+
         enemyAnimator.SetBool(EnemyControlsManager.BossFallingParam, false);
         enemyStats.isJumping = false;
+        enemyRB.velocity = Vector3.zero;
+
+        agent.enabled = true;
+        UpdateState(EnemyState.Idle);
     }
 
     void DoStuffWhileEnemyIdle()
@@ -179,13 +189,15 @@ public class BossEnemyController : MonoBehaviour
 
         int randomNumber = Random.Range(0, 1000);
         int randomMove = randomNumber % 5;
+        // int randomMove = 1;
+        // int randomMove = randomNumber % 2;
 
         print("Current State: " + currentState);
 
         switch (randomMove)
         {
             case 0:
-                currentState = EnemyState.Moving;
+                UpdateState(EnemyState.Moving);
                 break;
 
             case 1:
@@ -193,15 +205,15 @@ public class BossEnemyController : MonoBehaviour
                 break;
 
             case 2:
-                currentState = EnemyState.RingAttack;
+                UpdateState(EnemyState.RingAttack);
                 break;
 
             case 3:
-                currentState = EnemyState.BallAttack;
+                UpdateState(EnemyState.BallAttack);
                 break;
 
             case 4:
-                currentState = EnemyState.MissileAttack;
+                UpdateState(EnemyState.MissileAttack);
                 break;
         }
 
@@ -213,8 +225,13 @@ public class BossEnemyController : MonoBehaviour
         if (currentState == EnemyState.Jumping || currentState == EnemyState.Falling)
             return;
 
-        currentState = EnemyState.Jumping;
+        UpdateState(EnemyState.Jumping);
         agent.enabled = false;
+
+        Vector3 currentPosition = gameObject.transform.position;
+        Vector3 modifiedPosition = new Vector3(currentPosition.x, launchFromHeightAboveGround,
+            currentPosition.z);
+        gameObject.transform.position = modifiedPosition;
 
         jumpOnTarget.TriggerJump();
 
@@ -274,7 +291,12 @@ public class BossEnemyController : MonoBehaviour
         if (yVelocity < fallThreshold && currentState != EnemyState.Falling)
         {
             enemyAnimator.SetBool(EnemyControlsManager.BossFallingParam, true);
-            currentState = EnemyState.Falling;
+            UpdateState(EnemyState.Falling);
         }
+    }
+
+    void UpdateState(EnemyState state)
+    {
+        currentState = state;
     }
 }
