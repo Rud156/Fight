@@ -10,9 +10,10 @@ using UnityEngine.AI;
 public class BossEnemyController : MonoBehaviour
 {
     [Header("General Stats")]
-    public float rotationSpeed = 0.7f;
-    public int maxHealth = 500;
+    public float rotationRate = 0.7f;
+    public int maxHealth = 5000;
     public float fallThreshold = -1f;
+    public float waitTimeBetweenAttacks = 0.5f;
     public int minTimeCountBetweenStateChange = 3;
     public int maxTimeCountBetweenStateChange = 7;
 
@@ -21,6 +22,10 @@ public class BossEnemyController : MonoBehaviour
     public GameObject jumpingRing;
     public GameObject jumpingBalls;
     public GameObject missile;
+
+    [Header("Effects Launch Positions")]
+    public GameObject ringAndBallLaunchPosition;
+    public GameObject missileLaunchPosition;
 
     private GameObject player;
     private NavMeshAgent agent;
@@ -31,7 +36,9 @@ public class BossEnemyController : MonoBehaviour
     private BossEnemyStats enemyStats;
 
     private float currentHealth;
+    private float randomSelectedTimeStateChange;
     private float currentTimeStateChange;
+    private int timesFunctionCalled;
 
     private enum EnemyState
     {
@@ -63,8 +70,12 @@ public class BossEnemyController : MonoBehaviour
 
         currentHealth = maxHealth;
         enemyStats.isJumping = false;
+
+        randomSelectedTimeStateChange = Random.Range(minTimeCountBetweenStateChange,
+            maxTimeCountBetweenStateChange);
         currentTimeStateChange = 0;
 
+        timesFunctionCalled = 0;
         currentState = EnemyState.Idle;
     }
 
@@ -76,10 +87,24 @@ public class BossEnemyController : MonoBehaviour
         if (currentHealth <= 0 && currentState != EnemyState.Dead)
             currentState = EnemyState.Dead;
 
+        MakeEnemyFall();
+        if (currentState != EnemyState.Dead)
+        {
+            Vector3 lookPosition = player.transform.position - gameObject.transform.position;
+            lookPosition.y = 0;
+
+            Quaternion rotation = Quaternion.LookRotation(lookPosition);
+            gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
+                rotation, rotationRate * Time.deltaTime);
+
+            enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
+            agent.SetDestination(player.transform.position);
+        }
+
         switch (currentState)
         {
             case EnemyState.Idle:
-                // Change to a Different State
+                DoStuffWhileEnemyIdle();
                 break;
 
             case EnemyState.Moving:
@@ -112,6 +137,12 @@ public class BossEnemyController : MonoBehaviour
         }
 
         currentTimeStateChange += Time.deltaTime;
+        if (currentTimeStateChange >= randomSelectedTimeStateChange &&
+            currentState != EnemyState.Falling)
+        {
+            currentState = EnemyState.Idle;
+            currentTimeStateChange = 0;
+        }
     }
 
     /// <summary>
@@ -129,21 +160,66 @@ public class BossEnemyController : MonoBehaviour
             return;
 
         currentState = EnemyState.Idle;
+        agent.enabled = true;
+
+        currentTimeStateChange = 0;
         enemyAnimator.SetBool(EnemyControlsManager.BossFallingParam, false);
+        enemyStats.isJumping = false;
     }
 
-    void DoStuffWhilePlayerIdle()
+    void DoStuffWhileEnemyIdle()
     {
+        enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, 0);
+        agent.ResetPath();
+        enemyRB.isKinematic = true;
 
+        randomSelectedTimeStateChange = Random.Range(minTimeCountBetweenStateChange,
+            maxTimeCountBetweenStateChange);
+        timesFunctionCalled = 0;
+
+        int randomNumber = Random.Range(0, 1000);
+        int randomMove = randomNumber % 5;
+
+        print("Current State: " + currentState);
+
+        switch (randomMove)
+        {
+            case 0:
+                currentState = EnemyState.Moving;
+                break;
+
+            case 1:
+                MakeEnemyJump();
+                break;
+
+            case 2:
+                currentState = EnemyState.RingAttack;
+                break;
+
+            case 3:
+                currentState = EnemyState.BallAttack;
+                break;
+
+            case 4:
+                currentState = EnemyState.MissileAttack;
+                break;
+        }
+
+        print("State Changed To: " + currentState);
     }
 
     void MakeEnemyJump()
     {
-        if (currentState == EnemyState.Jumping || currentState == EnemyState.Jumping)
+        if (currentState == EnemyState.Jumping || currentState == EnemyState.Falling)
             return;
 
         currentState = EnemyState.Jumping;
+        agent.enabled = false;
+
         jumpOnTarget.TriggerJump();
+
+        enemyStats.isJumping = true;
+        enemyAnimator.SetTrigger(EnemyControlsManager.BossJumpParam);
     }
 
     void MoveEnemyTowardsPlayer()
@@ -154,20 +230,45 @@ public class BossEnemyController : MonoBehaviour
 
     void AttackWithRings()
     {
+        if (currentState != EnemyState.RingAttack)
+            return;
 
+        if (currentTimeStateChange / (waitTimeBetweenAttacks * timesFunctionCalled) > 1)
+        {
+            timesFunctionCalled += 1;
+            Instantiate(jumpingRing, ringAndBallLaunchPosition.transform.position,
+                jumpingRing.transform.rotation);
+        }
     }
 
     void AttackWithBalls()
     {
+        if (currentState != EnemyState.BallAttack)
+            return;
+
+        if (currentTimeStateChange / (waitTimeBetweenAttacks * timesFunctionCalled) > 1)
+        {
+            timesFunctionCalled += 1;
+            Instantiate(jumpingBalls, ringAndBallLaunchPosition.transform.position,
+                jumpingBalls.transform.rotation);
+        }
 
     }
 
     void AttackWithMissiles()
     {
+        if (currentState != EnemyState.MissileAttack)
+            return;
 
+        if (currentTimeStateChange / (waitTimeBetweenAttacks * timesFunctionCalled) > 1)
+        {
+            timesFunctionCalled += 1;
+            Instantiate(missile, missile.transform.position,
+                missile.transform.rotation);
+        }
     }
 
-    void MakePlayerFall()
+    void MakeEnemyFall()
     {
         float yVelocity = enemyRB.velocity.y;
         if (yVelocity < fallThreshold && currentState != EnemyState.Falling)
@@ -176,5 +277,4 @@ public class BossEnemyController : MonoBehaviour
             currentState = EnemyState.Falling;
         }
     }
-
 }

@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class BossEnemyStats : MonoBehaviour
 {
-    [HideInInspector]
     public bool isJumping = false;
 }
