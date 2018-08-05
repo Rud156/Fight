@@ -2332,19 +2332,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.9662643
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.25755242
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_RootOrder
@@ -2355,14 +2355,14 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1426630699}
-    - target: {fileID: 137909997917740216, guid: 54bfe494372540e42a0bc63517c1ca10,
+    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
-      propertyPath: m_SkinnedMotionVectors
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 195033424049403532, guid: 54bfe494372540e42a0bc63517c1ca10,
+    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
-      propertyPath: m_BaseOffset
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4120,6 +4120,7 @@ MonoBehaviour:
   heightAboveGroundToSpawn: 0.2
   affectRadius: 5
   damagePower: 10
+  damageAmount: 20
   totalGroundEffectsToSpawn: 10
   sizeDivisibilityFactor: 5.5
 --- !u!1 &1760184425

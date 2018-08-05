@@ -17,6 +17,9 @@ public class JumpOnTarget : MonoBehaviour
     public float affectRadius = 5f;
     public float damagePower = 10f;
 
+    [Header("Player Damage Stats")]
+    public float damageAmount = 50;
+
     [Header("Jump Stats")]
     public float minLaunchAngle = 30f;
     public float maxLaunchAngle = 60f;
@@ -42,6 +45,7 @@ public class JumpOnTarget : MonoBehaviour
             if (!rb || !collider.CompareTag(TagsManager.Player))
                 continue;
 
+            collider.GetComponent<GetHitFromEnemy>().GetExternalDamage(damageAmount);
             rb.AddExplosionForce(damagePower, explosionPoint, affectRadius, 3f, ForceMode.Impulse);
         }
 

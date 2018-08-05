@@ -22,7 +22,23 @@ public class GetHitFromEnemy : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag(TagsManager.HandContact))
+        {
             playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
+            PlayerData.currentHealthLeft -= other.GetComponent<DamagePlayerOnHandContact>().damageAmount;
+        }
+
+        if (other.CompareTag(TagsManager.Missile))
+        {
+            playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
+            PlayerData.currentHealthLeft -= other.GetComponent<ExplodeMissile>().missileDamage;
+        }
+    }
+
+    public void GetExternalDamage(float damageAmount)
+    {
+        playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
+        PlayerData.currentHealthLeft -= damageAmount;
     }
 }

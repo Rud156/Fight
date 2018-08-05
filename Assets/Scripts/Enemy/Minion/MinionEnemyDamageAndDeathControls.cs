@@ -8,7 +8,6 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
 
     [Header("Minion Stats")]
     public float maxMinionHealth = 30;
-    public GameObject deathEffect;
 
     [Header("Minion Health")]
     public Color minHealthColor = Color.red;
@@ -73,10 +72,5 @@ public class MinionEnemyDamageAndDeathControls : MonoBehaviour
             currentMinionHealth -= DamageRateManager.GetArcContactDamage();
             minionAnimator.SetTrigger(EnemyControlsManager.MinionHitParam);
         }
-    }
-
-    void Dead()
-    {
-        Destroy(gameObject);
     }
 }

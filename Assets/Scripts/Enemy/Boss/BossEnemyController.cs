@@ -11,7 +11,6 @@ public class BossEnemyController : MonoBehaviour
 {
     [Header("General Stats")]
     public float rotationRate = 0.7f;
-    public int maxHealth = 5000;
     public float fallThreshold = -1f;
     public float launchFromHeightAboveGround = 1f;
     public float waitTimeBetweenAttacks = 0.5f;
@@ -36,7 +35,6 @@ public class BossEnemyController : MonoBehaviour
     private JumpOnTarget jumpOnTarget;
     private BossEnemyStats enemyStats;
 
-    private float currentHealth;
     private float randomSelectedTimeStateChange;
     private float currentTimeStateChange;
     private int timesFunctionCalled;
@@ -69,7 +67,6 @@ public class BossEnemyController : MonoBehaviour
         enemyStats = gameObject.GetComponent<BossEnemyStats>();
         jumpOnTarget = gameObject.GetComponent<JumpOnTarget>();
 
-        currentHealth = maxHealth;
         enemyStats.isJumping = false;
 
         randomSelectedTimeStateChange = Random.Range(minTimeCountBetweenStateChange,
@@ -85,27 +82,25 @@ public class BossEnemyController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (currentHealth <= 0 && currentState != EnemyState.Dead)
-            UpdateState(EnemyState.Dead);
-
-        MakeEnemyFall();
-
         if (currentState != EnemyState.Dead)
         {
+            MakeEnemyFall();
+
             Vector3 lookPosition = player.transform.position - gameObject.transform.position;
             lookPosition.y = 0;
 
             Quaternion rotation = Quaternion.LookRotation(lookPosition);
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
                 rotation, rotationRate * Time.deltaTime);
-        }
 
-        // Vector3 position = gameObject.transform.position;
-        // Vector3 clampedPosition = new Vector3(position.x, Mathf.Clamp(position.y, 0.2f, 1000), position.z);
-        // if (agent.enabled)
-        //     agent.Warp(clampedPosition);
-        // else
-        //     gameObject.transform.position = clampedPosition;
+            currentTimeStateChange += Time.deltaTime;
+            if (currentTimeStateChange >= randomSelectedTimeStateChange &&
+                currentState != EnemyState.Falling)
+            {
+                UpdateState(EnemyState.Idle);
+                currentTimeStateChange = 0;
+            }
+        }
 
         switch (currentState)
         {
@@ -140,14 +135,6 @@ public class BossEnemyController : MonoBehaviour
             case EnemyState.MissileAttack:
                 AttackWithMissiles();
                 break;
-        }
-
-        currentTimeStateChange += Time.deltaTime;
-        if (currentTimeStateChange >= randomSelectedTimeStateChange &&
-            currentState != EnemyState.Falling)
-        {
-            UpdateState(EnemyState.Idle);
-            currentTimeStateChange = 0;
         }
     }
 

@@ -13,6 +13,9 @@ public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
     public float affectRadius = 5f;
     public float damagePower = 10f;
 
+    [Header("Player Damage Stats")]
+    public float damageAmount = 20;
+
     protected List<ParticleCollisionEvent> collisionEvents;
 
     /// <summary>
@@ -39,6 +42,8 @@ public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
                 if (!rb || (!rb.CompareTag(TagsManager.Player) && !rb.CompareTag(TagsManager.Enemy)))
                     continue;
 
+                if (rb.CompareTag(TagsManager.Player))
+                    collider.GetComponent<GetHitFromEnemy>().GetExternalDamage(damageAmount);
                 rb.AddExplosionForce(damagePower, position, affectRadius, 3f, ForceMode.Impulse);
             }
         }

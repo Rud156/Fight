@@ -17,4 +17,7 @@ public class TagsManager
     public const string SwordContact = "Sword Contact";
     public const string FootContact = "Foot Contact";
     public const string HandContact = "Hand Contact";
+    
+
+    public const string Missile = "Missile";
 }
