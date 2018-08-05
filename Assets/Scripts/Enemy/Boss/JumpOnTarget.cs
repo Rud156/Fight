@@ -72,7 +72,6 @@ public class JumpOnTarget : MonoBehaviour
 
         // Calculate the velocity magnitude
         float vel = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
-        print(vel * dir.normalized);
         return vel * dir.normalized;
     }
 }
