@@ -114,6 +114,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3032977 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1055892419388320, guid: 54bfe494372540e42a0bc63517c1ca10,
+    type: 2}
+  m_PrefabInternal: {fileID: 771002567}
 --- !u!1 &11478038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2121,11 @@ Transform:
   m_Father: {fileID: 1574492877}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696382418 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1933625002856874, guid: 54bfe494372540e42a0bc63517c1ca10,
+    type: 2}
+  m_PrefabInternal: {fileID: 771002567}
 --- !u!1 &709171246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,13 +2374,28 @@ Prefab:
     - target: {fileID: 54415429748155470, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4689442093476010, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.2516
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114962824678697806, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195033424049403532, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114962824678697806, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &810034789
@@ -4990,6 +5015,36 @@ Transform:
   m_Father: {fileID: 1426630702}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1897593414 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10,
+    type: 2}
+  m_PrefabInternal: {fileID: 771002567}
+--- !u!114 &1897593415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1897593414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55649c653012924429d3c5617cc54e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationRate: 0.7
+  maxHealth: 500
+  fallThreshold: -0.5
+  waitTimeBetweenAttacks: 0.5
+  minTimeCountBetweenStateChange: 3
+  maxTimeCountBetweenStateChange: 7
+  deathEffect: {fileID: 0}
+  jumpingRing: {fileID: 1336468652949830, guid: bb38439900949d34e99d68079db67c15,
+    type: 2}
+  jumpingBalls: {fileID: 1718012591189560, guid: adf99f52dfe818d4f87c9402f54820ff,
+    type: 2}
+  missile: {fileID: 1732946225236264, guid: afa1267c851acb64c9d04c7d6f842a10, type: 2}
+  ringAndBallLaunchPosition: {fileID: 696382418}
+  missileLaunchPosition: {fileID: 3032977}
 --- !u!1 &1938868658
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,6 +88,7 @@ public class BossEnemyController : MonoBehaviour
             currentState = EnemyState.Dead;
 
         MakeEnemyFall();
+
         if (currentState != EnemyState.Dead)
         {
             Vector3 lookPosition = player.transform.position - gameObject.transform.position;
@@ -96,9 +97,6 @@ public class BossEnemyController : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(lookPosition);
             gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
                 rotation, rotationRate * Time.deltaTime);
-
-            enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, agent.velocity.magnitude);
-            agent.SetDestination(player.transform.position);
         }
 
         switch (currentState)

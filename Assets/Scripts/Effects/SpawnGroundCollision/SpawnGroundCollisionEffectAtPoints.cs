@@ -37,7 +37,7 @@ public class SpawnGroundCollisionEffectAtPoints : MonoBehaviour
             {
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
                 if (!rb || (!rb.CompareTag(TagsManager.Player) && !rb.CompareTag(TagsManager.Enemy)))
-                    return;
+                    continue;
 
                 rb.AddExplosionForce(damagePower, position, affectRadius, 3f, ForceMode.Impulse);
             }
