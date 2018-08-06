@@ -1887,6 +1887,7 @@ MonoBehaviour:
   spawnTime: 7
   player: {fileID: 1426630699}
   distanceFromPlayer: 50
+  runAtStart: 1
 --- !u!1 &631239346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,11 +2359,15 @@ Prefab:
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5051,7 +5056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -260.67, y: -11.920013}
+  m_AnchoredPosition: {x: -260.67, y: -11.920044}
   m_SizeDelta: {x: 57.82, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961512117

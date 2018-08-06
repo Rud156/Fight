@@ -14,7 +14,20 @@ public class MinionSpawner : MonoBehaviour
     public GameObject player;
     public float distanceFromPlayer = 30f;
 
+    [Header("Debug")]
+    public bool runAtStart = false;
+
     private Coroutine coroutine;
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        if (runAtStart)
+            StartSpawn();
+    }
 
     public void StartSpawn()
     {

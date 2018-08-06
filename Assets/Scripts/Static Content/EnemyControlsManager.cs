@@ -16,6 +16,4 @@ public class EnemyControlsManager
     // Boss Enemy
     public const string BossFallingParam = "Falling";
     public const string BossJumpParam = "Jump";
-
-
 }

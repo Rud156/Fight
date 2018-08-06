@@ -6,7 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(JumpOnTarget))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(BossEnemyStats))]
 public class BossEnemyController : MonoBehaviour
 {
     [Header("General Stats")]
@@ -33,11 +32,10 @@ public class BossEnemyController : MonoBehaviour
     private Rigidbody enemyRB;
 
     private JumpOnTarget jumpOnTarget;
-    private BossEnemyStats enemyStats;
-
     private float randomSelectedTimeStateChange;
     private float currentTimeStateChange;
     private int timesFunctionCalled;
+    private bool isJumping;
 
     private enum EnemyState
     {
@@ -64,10 +62,9 @@ public class BossEnemyController : MonoBehaviour
         enemyAnimator = gameObject.GetComponent<Animator>();
         enemyRB = gameObject.GetComponent<Rigidbody>();
 
-        enemyStats = gameObject.GetComponent<BossEnemyStats>();
         jumpOnTarget = gameObject.GetComponent<JumpOnTarget>();
 
-        enemyStats.isJumping = false;
+        isJumping = false;
 
         randomSelectedTimeStateChange = Random.Range(minTimeCountBetweenStateChange,
             maxTimeCountBetweenStateChange);
@@ -145,7 +142,7 @@ public class BossEnemyController : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if (!enemyStats.isJumping)
+        if (!isJumping)
             return;
 
         if (!other.gameObject.CompareTag(TagsManager.Player) &&
@@ -157,7 +154,7 @@ public class BossEnemyController : MonoBehaviour
         currentTimeStateChange = 0;
 
         enemyAnimator.SetBool(EnemyControlsManager.BossFallingParam, false);
-        enemyStats.isJumping = false;
+        isJumping = false;
         enemyRB.velocity = Vector3.zero;
 
         agent.enabled = true;
@@ -222,7 +219,7 @@ public class BossEnemyController : MonoBehaviour
 
         jumpOnTarget.TriggerJump();
 
-        enemyStats.isJumping = true;
+        isJumping = true;
         enemyAnimator.SetTrigger(EnemyControlsManager.BossJumpParam);
     }
 
