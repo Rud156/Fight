@@ -226,6 +226,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1317311312121368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4988504208117350}
+  - component: {fileID: 33512389924521392}
+  - component: {fileID: 65377157555225644}
+  - component: {fileID: 23280366959182696}
+  m_Layer: 0
+  m_Name: SoundRippleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1382672966002946
 GameObject:
   m_ObjectHideFlags: 1
@@ -452,7 +470,6 @@ GameObject:
   - component: {fileID: 54415429748155470}
   - component: {fileID: 136331051341191298}
   - component: {fileID: 195033424049403532}
-  - component: {fileID: 114730285913199552}
   - component: {fileID: 114723764644948276}
   - component: {fileID: 114988445842412888}
   - component: {fileID: 114200624081225222}
@@ -649,6 +666,7 @@ Transform:
   - {fileID: 4689442093476010}
   - {fileID: 4141339200839744}
   - {fileID: 224391411807628304}
+  - {fileID: 4988504208117350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -945,6 +963,60 @@ Transform:
   m_Father: {fileID: 4864363149325364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4988504208117350
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317311312121368}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1894, z: 0.05}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 4288510156422100}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23280366959182696
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317311312121368}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33512389924521392
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317311312121368}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54415429748155470
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -960,6 +1032,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &65377157555225644
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317311312121368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95056837783725740
 Animator:
   serializedVersion: 3
@@ -1009,13 +1093,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75525de96045e134983e8413d6abecf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBossHealth: 5000
+  maxBossHealth: 500
   deathEffect: {fileID: 0}
   minHealthColor: {r: 1, g: 0, b: 0, a: 1}
   halfHealthColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   maxHealthColor: {r: 0, g: 1, b: 0, a: 1}
   bossHealthSlider: {fileID: 114289130533702254}
   bossHealthFiller: {fileID: 114312388424675668}
+  currentBossHealth: 0
 --- !u!114 &114289130533702254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1137,18 +1222,6 @@ MonoBehaviour:
   damageAmount: 50
   minLaunchAngle: 30
   maxLaunchAngle: 60
---- !u!114 &114730285913199552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738486747507758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0964a52aeaf758f4fb8b375566fa2043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isJumping: 0
 --- !u!114 &114863891654513522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1190,6 +1263,14 @@ MonoBehaviour:
   missile: {fileID: 1732946225236264, guid: afa1267c851acb64c9d04c7d6f842a10, type: 2}
   ringAndBallLaunchPosition: {fileID: 1933625002856874}
   missileLaunchPosition: {fileID: 1055892419388320}
+  screenOverlay: {fileID: 0}
+  minionSpawner: {fileID: 0}
+  soundRipple: {fileID: 1885019466599770, guid: 085fb8b4499b8a04ebea1f33212eccf7,
+    type: 2}
+  soundRippleSpawnParent: {fileID: 1317311312121368}
+  playSoundTime: 3
+  spawnEnemiesTime: 60
+  floatHeightAboveGround: 50
 --- !u!136 &136331051341191298
 CapsuleCollider:
   m_ObjectHideFlags: 1

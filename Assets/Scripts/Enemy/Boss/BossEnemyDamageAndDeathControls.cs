@@ -17,7 +17,8 @@ public class BossEnemyDamageAndDeathControls : MonoBehaviour
     public Slider bossHealthSlider;
     public Image bossHealthFiller;
 
-    private float currentBossHealth;
+    [HideInInspector]
+    public float currentBossHealth;
 
     // Use this for initialization
     void Start()

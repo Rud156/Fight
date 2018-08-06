@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(JumpOnTarget))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BossEnemyDamageAndDeathControls))]
 public class BossEnemyController : MonoBehaviour
 {
     [Header("General Stats")]
@@ -26,16 +27,29 @@ public class BossEnemyController : MonoBehaviour
     public GameObject ringAndBallLaunchPosition;
     public GameObject missileLaunchPosition;
 
+    [Header("Health Low Effect")]
+    public AddScreenOverlay screenOverlay;
+    public MinionSpawner minionSpawner;
+    public GameObject soundRipple;
+    public GameObject soundRippleSpawnParent;
+    public float playSoundTime = 3f;
+    public float spawnEnemiesTime = 60f;
+    public float floatHeightAboveGround = 50f;
+
     private GameObject player;
     private NavMeshAgent agent;
     private Animator enemyAnimator;
     private Rigidbody enemyRB;
+    private BossEnemyDamageAndDeathControls bossHealthAndDamage;
 
     private JumpOnTarget jumpOnTarget;
     private float randomSelectedTimeStateChange;
     private float currentTimeStateChange;
     private int timesFunctionCalled;
     private bool isJumping;
+
+    private int lowHeathAnimationCount;
+    private bool disableUpdate;
 
     private enum EnemyState
     {
@@ -47,6 +61,8 @@ public class BossEnemyController : MonoBehaviour
         RingAttack,
         BallAttack,
         MissileAttack,
+
+        LowHealthAnimation
     }
     private EnemyState currentState;
 
@@ -62,6 +78,7 @@ public class BossEnemyController : MonoBehaviour
         enemyAnimator = gameObject.GetComponent<Animator>();
         enemyRB = gameObject.GetComponent<Rigidbody>();
 
+        bossHealthAndDamage = gameObject.GetComponent<BossEnemyDamageAndDeathControls>();
         jumpOnTarget = gameObject.GetComponent<JumpOnTarget>();
 
         isJumping = false;
@@ -71,6 +88,10 @@ public class BossEnemyController : MonoBehaviour
         currentTimeStateChange = 0;
 
         timesFunctionCalled = 0;
+
+        lowHeathAnimationCount = -1;
+        disableUpdate = false;
+
         UpdateState(EnemyState.Idle);
     }
 
@@ -79,16 +100,19 @@ public class BossEnemyController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Vector3 lookPosition = player.transform.position - gameObject.transform.position;
+        lookPosition.y = 0;
+
+        Quaternion rotation = Quaternion.LookRotation(lookPosition);
+        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
+            rotation, rotationRate * Time.deltaTime);
+
+        if (disableUpdate)
+            return;
+
         if (currentState != EnemyState.Dead)
         {
             MakeEnemyFall();
-
-            Vector3 lookPosition = player.transform.position - gameObject.transform.position;
-            lookPosition.y = 0;
-
-            Quaternion rotation = Quaternion.LookRotation(lookPosition);
-            gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation,
-                rotation, rotationRate * Time.deltaTime);
 
             currentTimeStateChange += Time.deltaTime;
             if (currentTimeStateChange >= randomSelectedTimeStateChange &&
@@ -163,6 +187,29 @@ public class BossEnemyController : MonoBehaviour
 
     void DoStuffWhileEnemyIdle()
     {
+        float halfHealth = bossHealthAndDamage.maxBossHealth / 2;
+        float quarterHealth = bossHealthAndDamage.maxBossHealth / 4;
+
+        if (bossHealthAndDamage.currentBossHealth <= halfHealth && lowHeathAnimationCount == -1)
+        {
+            StartCoroutine(FloatAndSpawnEnemies());
+
+            // Play First Time
+            lowHeathAnimationCount += 1;
+            disableUpdate = true;
+            return;
+        }
+        else if (bossHealthAndDamage.currentBossHealth <= quarterHealth && lowHeathAnimationCount < 1)
+        {
+            StartCoroutine(FloatAndSpawnEnemies());
+
+            // Play Second Time
+            lowHeathAnimationCount = lowHeathAnimationCount == -1 ?
+                lowHeathAnimationCount + 2 : lowHeathAnimationCount + 1;
+            disableUpdate = true;
+            return;
+        }
+
         enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, 0);
         agent.ResetPath();
         enemyRB.isKinematic = true;
@@ -282,5 +329,33 @@ public class BossEnemyController : MonoBehaviour
     void UpdateState(EnemyState state)
     {
         currentState = state;
+    }
+
+    IEnumerator FloatAndSpawnEnemies()
+    {
+        enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, 0);
+        agent.ResetPath();
+        agent.enabled = false;
+        enemyRB.isKinematic = true;
+
+        GameObject soundRippleInstance = Instantiate(soundRipple, gameObject.transform.position,
+            gameObject.transform.rotation);
+        soundRippleInstance.transform.SetParent(soundRippleSpawnParent.transform);
+        screenOverlay.TurnOnChromaticAberration();
+
+        yield return new WaitForSeconds(playSoundTime);
+
+        Destroy(soundRippleInstance);
+        screenOverlay.TurnOffChromaticAberration();
+
+        Vector3 currentPosition = gameObject.transform.position;
+        gameObject.transform.position = new Vector3(currentPosition.x, floatHeightAboveGround,
+            currentPosition.z);
+
+        minionSpawner.StartSpawn();
+
+        yield return new WaitForSeconds(spawnEnemiesTime);
+
+        minionSpawner.StopSpawn();
     }
 }

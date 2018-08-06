@@ -1887,7 +1887,7 @@ MonoBehaviour:
   spawnTime: 7
   player: {fileID: 1426630699}
   distanceFromPlayer: 50
-  runAtStart: 1
+  runAtStart: 0
 --- !u!1 &631239346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2351,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114988445842412888, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: screenOverlay
+      value: 
+      objectReference: {fileID: 1806465322}
+    - target: {fileID: 114988445842412888, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: minionSpawner
+      value: 
+      objectReference: {fileID: 580744068}
     - target: {fileID: 114723764644948276, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: target
@@ -2359,15 +2369,11 @@ Prefab:
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4358,6 +4364,7 @@ GameObject:
   - component: {fileID: 1806465319}
   - component: {fileID: 1806465320}
   - component: {fileID: 1806465321}
+  - component: {fileID: 1806465322}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4693,6 +4700,19 @@ MonoBehaviour:
   upDownSpeed: 250
   minAngle: 30
   maxAngle: 340
+--- !u!114 &1806465322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1806465314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc722abbdfc735f459eee6af75918ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlayTexture: {fileID: 2800000, guid: 3aac3087967ea4fae858ec0494fd24d9, type: 3}
+  controller: {fileID: 1806465320}
 --- !u!1 &1818460834
 GameObject:
   m_ObjectHideFlags: 0

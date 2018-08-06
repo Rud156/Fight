@@ -6,6 +6,6 @@ public class PlayerData
 {
     public static float yaw;
 
-    public const float maxHealth = 250;
-    public static float currentHealthLeft = 250;
+    public const float maxHealth = 2000;
+    public static float currentHealthLeft = 2000;
 }
