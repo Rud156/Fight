@@ -32,6 +32,7 @@ public class BossEnemyController : MonoBehaviour
     public MinionSpawner minionSpawner;
     public GameObject soundRipple;
     public GameObject soundRippleSpawnParent;
+    public AudioSource soundSource;
     public float playSoundTime = 3f;
     public float spawnEnemiesTime = 60f;
     public float floatHeightAboveGround = 50f;
@@ -187,10 +188,11 @@ public class BossEnemyController : MonoBehaviour
 
     void DoStuffWhileEnemyIdle()
     {
-        float halfHealth = bossHealthAndDamage.maxBossHealth / 2;
-        float quarterHealth = bossHealthAndDamage.maxBossHealth / 4;
+        float threeQuarterHealth = bossHealthAndDamage.maxBossHealth * 0.75f;
+        float halfHealth = bossHealthAndDamage.maxBossHealth * 0.5f;
+        float quarterHealth = bossHealthAndDamage.maxBossHealth * 0.25f;
 
-        if (bossHealthAndDamage.currentBossHealth <= halfHealth && lowHeathAnimationCount == -1)
+        if (bossHealthAndDamage.currentBossHealth <= threeQuarterHealth && lowHeathAnimationCount == -1)
         {
             StartCoroutine(FloatAndSpawnEnemies());
 
@@ -199,7 +201,17 @@ public class BossEnemyController : MonoBehaviour
             disableUpdate = true;
             return;
         }
-        else if (bossHealthAndDamage.currentBossHealth <= quarterHealth && lowHeathAnimationCount < 1)
+        else if (bossHealthAndDamage.currentBossHealth <= halfHealth && lowHeathAnimationCount < 1)
+        {
+            StartCoroutine(FloatAndSpawnEnemies());
+
+            // Play First Time
+            lowHeathAnimationCount = lowHeathAnimationCount == -1 ?
+               lowHeathAnimationCount + 2 : lowHeathAnimationCount + 1;
+            disableUpdate = true;
+            return;
+        }
+        else if (bossHealthAndDamage.currentBossHealth <= quarterHealth && lowHeathAnimationCount < 2)
         {
             StartCoroutine(FloatAndSpawnEnemies());
 
@@ -342,11 +354,13 @@ public class BossEnemyController : MonoBehaviour
             gameObject.transform.rotation);
         soundRippleInstance.transform.SetParent(soundRippleSpawnParent.transform);
         screenOverlay.TurnOnChromaticAberration();
+        soundSource.Play();
 
         yield return new WaitForSeconds(playSoundTime);
 
         Destroy(soundRippleInstance);
         screenOverlay.TurnOffChromaticAberration();
+        soundSource.Stop();
 
         Vector3 currentPosition = gameObject.transform.position;
         gameObject.transform.position = new Vector3(currentPosition.x, floatHeightAboveGround,
@@ -356,6 +370,9 @@ public class BossEnemyController : MonoBehaviour
 
         yield return new WaitForSeconds(spawnEnemiesTime);
 
+        gameObject.transform.position = currentPosition;
+        agent.enabled = true;
+        disableUpdate = false;
         minionSpawner.StopSpawn();
     }
 }

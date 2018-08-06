@@ -8,7 +8,7 @@ public class MinionSpawner : MonoBehaviour
     [Header("Spawner Data")]
     public BoxCollider enclosingBoxCollider;
     public GameObject minion;
-    public float spawnTime = 7f;
+    public float initialSpawnTime = 5f;
 
     [Header("Player")]
     public GameObject player;
@@ -17,6 +17,7 @@ public class MinionSpawner : MonoBehaviour
     [Header("Debug")]
     public bool runAtStart = false;
 
+    private float currentSpawnTime;
     private Coroutine coroutine;
 
     /// <summary>
@@ -25,6 +26,7 @@ public class MinionSpawner : MonoBehaviour
     /// </summary>
     void Start()
     {
+        currentSpawnTime = initialSpawnTime;
         if (runAtStart)
             StartSpawn();
     }
@@ -37,7 +39,7 @@ public class MinionSpawner : MonoBehaviour
 
     public void StopSpawn()
     {
-
+        currentSpawnTime -= 2;
         StopCoroutine(coroutine);
     }
 
@@ -61,7 +63,7 @@ public class MinionSpawner : MonoBehaviour
             }
 
             Instantiate(minion, randomPoint, minion.transform.rotation);
-            yield return new WaitForSeconds(spawnTime);
+            yield return new WaitForSeconds(initialSpawnTime);
         }
     }
 }
