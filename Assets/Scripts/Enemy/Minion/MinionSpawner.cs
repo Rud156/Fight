@@ -31,15 +31,15 @@ public class MinionSpawner : MonoBehaviour
             StartSpawn();
     }
 
-    public void StartSpawn()
+    public void StartSpawn(int spawnTime = 7)
     {
+        currentSpawnTime = spawnTime;
         coroutine = StartCoroutine(SpawnMinions());
 
     }
 
     public void StopSpawn()
     {
-        currentSpawnTime -= 2;
         StopCoroutine(coroutine);
     }
 

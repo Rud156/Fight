@@ -18,7 +18,6 @@ public class BossEnemyController : MonoBehaviour
     public int maxTimeCountBetweenStateChange = 7;
 
     [Header("Effects")]
-    public GameObject deathEffect;
     public GameObject jumpingRing;
     public GameObject jumpingBalls;
     public GameObject missile;
@@ -31,7 +30,7 @@ public class BossEnemyController : MonoBehaviour
     public AddScreenOverlay screenOverlay;
     public MinionSpawner minionSpawner;
     public GameObject soundRipple;
-    public GameObject soundRippleSpawnParent;
+    public GameObject soundRippleSpawnPoint;
     public AudioSource soundSource;
     public float playSoundTime = 3f;
     public float spawnEnemiesTime = 60f;
@@ -192,15 +191,9 @@ public class BossEnemyController : MonoBehaviour
         float halfHealth = bossHealthAndDamage.maxBossHealth * 0.5f;
         float quarterHealth = bossHealthAndDamage.maxBossHealth * 0.25f;
 
-        print("Current Health Inside Idle: " + bossHealthAndDamage.currentBossHealth);
-        print("Three Quarters: " + threeQuarterHealth);
-        print("Half Health: " + halfHealth);
-        print("Quarter Health: " + quarterHealth);
-        print("Low Health Animation Count: " + lowHeathAnimationCount);
-
         if (bossHealthAndDamage.currentBossHealth <= threeQuarterHealth && lowHeathAnimationCount == -1)
         {
-            StartCoroutine(FloatAndSpawnEnemies());
+            StartCoroutine(FloatAndSpawnEnemies(5));
 
             // Play First Time
             lowHeathAnimationCount += 1;
@@ -209,7 +202,7 @@ public class BossEnemyController : MonoBehaviour
         }
         else if (bossHealthAndDamage.currentBossHealth <= halfHealth && lowHeathAnimationCount < 1)
         {
-            StartCoroutine(FloatAndSpawnEnemies());
+            StartCoroutine(FloatAndSpawnEnemies(3));
 
             // Play First Time
             lowHeathAnimationCount = lowHeathAnimationCount == -1 ?
@@ -219,7 +212,7 @@ public class BossEnemyController : MonoBehaviour
         }
         else if (bossHealthAndDamage.currentBossHealth <= quarterHealth && lowHeathAnimationCount < 2)
         {
-            StartCoroutine(FloatAndSpawnEnemies());
+            StartCoroutine(FloatAndSpawnEnemies(1));
 
             // Play Second Time
             int amountToAdd = 1;
@@ -354,16 +347,16 @@ public class BossEnemyController : MonoBehaviour
         currentState = state;
     }
 
-    IEnumerator FloatAndSpawnEnemies()
+    IEnumerator FloatAndSpawnEnemies(int spawnTime)
     {
         enemyAnimator.SetFloat(EnemyControlsManager.EnemyVelocity, 0);
         agent.ResetPath();
         agent.enabled = false;
         enemyRB.isKinematic = true;
 
-        GameObject soundRippleInstance = Instantiate(soundRipple, gameObject.transform.position,
+        GameObject soundRippleInstance = Instantiate(soundRipple, soundRippleSpawnPoint.transform.position,
             gameObject.transform.rotation);
-        soundRippleInstance.transform.SetParent(soundRippleSpawnParent.transform);
+        soundRippleInstance.transform.SetParent(soundRippleSpawnPoint.transform);
         screenOverlay.TurnOnChromaticAberration();
         soundSource.Play();
 
@@ -377,7 +370,7 @@ public class BossEnemyController : MonoBehaviour
         gameObject.transform.position = new Vector3(currentPosition.x, floatHeightAboveGround,
             currentPosition.z);
 
-        minionSpawner.StartSpawn();
+        minionSpawner.StartSpawn(spawnTime);
 
         yield return new WaitForSeconds(spawnEnemiesTime);
 

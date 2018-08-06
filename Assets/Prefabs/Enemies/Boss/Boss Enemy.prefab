@@ -1204,7 +1204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBossHealth: 500
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 1984058053718610, guid: 42a63765695054542bdc7be138bc996b,
+    type: 2}
   minHealthColor: {r: 1, g: 0, b: 0, a: 1}
   halfHealthColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   maxHealthColor: {r: 0, g: 1, b: 0, a: 1}
@@ -1365,7 +1366,6 @@ MonoBehaviour:
   waitTimeBetweenAttacks: 3
   minTimeCountBetweenStateChange: 3
   maxTimeCountBetweenStateChange: 7
-  deathEffect: {fileID: 0}
   jumpingRing: {fileID: 1336468652949830, guid: bb38439900949d34e99d68079db67c15,
     type: 2}
   jumpingBalls: {fileID: 1718012591189560, guid: adf99f52dfe818d4f87c9402f54820ff,
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   minionSpawner: {fileID: 0}
   soundRipple: {fileID: 1885019466599770, guid: 085fb8b4499b8a04ebea1f33212eccf7,
     type: 2}
-  soundRippleSpawnParent: {fileID: 1317311312121368}
+  soundRippleSpawnPoint: {fileID: 1317311312121368}
   soundSource: {fileID: 82650237383897602}
   playSoundTime: 3
   spawnEnemiesTime: 60

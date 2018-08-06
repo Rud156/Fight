@@ -2369,24 +2369,13 @@ Prefab:
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114200624081225222, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: maxBossHealth
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114988445842412888, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: deathEffect
-      value: 
-      objectReference: {fileID: 1984058053718610, guid: 42a63765695054542bdc7be138bc996b,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_IsPrefabParent: 0
