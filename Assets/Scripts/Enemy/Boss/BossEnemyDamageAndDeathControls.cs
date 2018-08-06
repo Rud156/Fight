@@ -41,7 +41,9 @@ public class BossEnemyDamageAndDeathControls : MonoBehaviour
 
         if (currentHealthLeft <= 0)
         {
-            Instantiate(deathEffect, gameObject.transform.position, deathEffect.transform.rotation);
+            Vector3 position = gameObject.transform.position;
+            Instantiate(deathEffect, new Vector3(position.x, 3.5f, position.z),
+                deathEffect.transform.rotation);
             Destroy(gameObject);
         }
     }

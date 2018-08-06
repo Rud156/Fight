@@ -2410,9 +2410,38 @@ MonoBehaviour:
   enclosingBoxCollider: {fileID: 580744067}
   minion: {fileID: 1782719091290434, guid: 3665c0652f6b76840aaea0ab3af7548c, type: 2}
   initialSpawnTime: 5
+  spawnerHolder: {fileID: 599019797}
   player: {fileID: 1426630699}
   distanceFromPlayer: 50
   runAtStart: 0
+--- !u!1 &599019797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 599019798}
+  m_Layer: 0
+  m_Name: Minnion Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599019798
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 599019797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631239346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,7 +2995,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114988445842412888, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
@@ -4490,6 +4519,10 @@ MonoBehaviour:
   movementThreshold: 2
   swordContact: {fileID: 209958335}
   footContact: {fileID: 1140803919}
+  bossEnemy: {fileID: 1175335300}
+  minionHolder: {fileID: 599019797}
+  textAnimator: {fileID: 819849850}
+  majorText: {fileID: 819849851}
 --- !u!136 &1426630704
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5181,7 +5214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1756374232
 Prefab:
@@ -5975,7 +6008,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4290238759033046, guid: 0ae72093f6a346b478e7f40b8b6886a3, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4290238759033046, guid: 0ae72093f6a346b478e7f40b8b6886a3, type: 2}
       propertyPath: m_LocalScale.x

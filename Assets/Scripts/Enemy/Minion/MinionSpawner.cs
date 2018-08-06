@@ -9,6 +9,7 @@ public class MinionSpawner : MonoBehaviour
     public BoxCollider enclosingBoxCollider;
     public GameObject minion;
     public float initialSpawnTime = 5f;
+    public GameObject spawnerHolder;
 
     [Header("Player")]
     public GameObject player;
@@ -62,7 +63,8 @@ public class MinionSpawner : MonoBehaviour
                 continue;
             }
 
-            Instantiate(minion, randomPoint, minion.transform.rotation);
+            GameObject minionInstance = Instantiate(minion, randomPoint, minion.transform.rotation);
+            minionInstance.transform.SetParent(spawnerHolder.transform);
             yield return new WaitForSeconds(initialSpawnTime);
         }
     }
