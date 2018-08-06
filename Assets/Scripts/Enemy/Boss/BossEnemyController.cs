@@ -192,6 +192,12 @@ public class BossEnemyController : MonoBehaviour
         float halfHealth = bossHealthAndDamage.maxBossHealth * 0.5f;
         float quarterHealth = bossHealthAndDamage.maxBossHealth * 0.25f;
 
+        print("Current Health Inside Idle: " + bossHealthAndDamage.currentBossHealth);
+        print("Three Quarters: " + threeQuarterHealth);
+        print("Half Health: " + halfHealth);
+        print("Quarter Health: " + quarterHealth);
+        print("Low Health Animation Count: " + lowHeathAnimationCount);
+
         if (bossHealthAndDamage.currentBossHealth <= threeQuarterHealth && lowHeathAnimationCount == -1)
         {
             StartCoroutine(FloatAndSpawnEnemies());
@@ -216,8 +222,13 @@ public class BossEnemyController : MonoBehaviour
             StartCoroutine(FloatAndSpawnEnemies());
 
             // Play Second Time
-            lowHeathAnimationCount = lowHeathAnimationCount == -1 ?
-                lowHeathAnimationCount + 2 : lowHeathAnimationCount + 1;
+            int amountToAdd = 1;
+            if (lowHeathAnimationCount == -1)
+                amountToAdd = 3;
+            else if (lowHeathAnimationCount == 0)
+                amountToAdd = 2;
+
+            lowHeathAnimationCount += amountToAdd;
             disableUpdate = true;
             return;
         }

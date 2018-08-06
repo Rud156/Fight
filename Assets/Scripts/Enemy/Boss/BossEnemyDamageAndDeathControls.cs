@@ -60,7 +60,5 @@ public class BossEnemyDamageAndDeathControls : MonoBehaviour
 
         if (other.CompareTag(TagsManager.SphereSpawn))
             currentBossHealth -= DamageRateManager.GetArcContactDamage();
-
-        print("Current Health: " + currentBossHealth);
     }
 }
