@@ -327,7 +327,7 @@ public class BossEnemyController : MonoBehaviour
         if (currentTimeStateChange / (waitTimeBetweenAttacks * timesFunctionCalled) > 1)
         {
             timesFunctionCalled += 1;
-            Instantiate(missile, missile.transform.position,
+            Instantiate(missile, missileLaunchPosition.transform.position,
                 missile.transform.rotation);
         }
     }

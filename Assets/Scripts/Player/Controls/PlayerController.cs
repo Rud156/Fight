@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool jumpedFromZeroVelocity;
 
     private bool forwardMovementKeyRemoved;
+    private bool disablePlayerMovement;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         jumped = false;
 
         forwardMovementKeyRemoved = false;
+        disablePlayerMovement = true;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,6 +45,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (disablePlayerMovement)
+            return;
+
         EnableAndDisableColliders();
 
         MakePlayerAttack();
@@ -174,5 +179,10 @@ public class PlayerController : MonoBehaviour
             isFalling = true;
             jumped = false;
         }
+    }
+
+    public void ActivatePlayerMovement()
+    {
+        disablePlayerMovement = false;
     }
 }
