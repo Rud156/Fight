@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GetHitFromEnemy : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource hitAudioSource;
+    public AudioClip hitAudio;
+
     private Animator playerAnimator;
 
     /// <summary>
@@ -13,6 +17,7 @@ public class GetHitFromEnemy : MonoBehaviour
     void Start()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
+        hitAudioSource.clip = hitAudio;
     }
 
     /// <summary>
@@ -26,12 +31,16 @@ public class GetHitFromEnemy : MonoBehaviour
         {
             playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
             PlayerData.currentHealthLeft -= other.GetComponent<DamagePlayerOnHandContact>().damageAmount;
+
+            hitAudioSource.Play();
         }
 
         if (other.CompareTag(TagsManager.Missile))
         {
             playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
             PlayerData.currentHealthLeft -= other.GetComponent<ExplodeMissile>().missileDamage;
+
+            hitAudioSource.Play();
         }
     }
 
@@ -39,5 +48,7 @@ public class GetHitFromEnemy : MonoBehaviour
     {
         playerAnimator.SetTrigger(PlayerControlsManager.HitParam);
         PlayerData.currentHealthLeft -= damageAmount;
+
+        hitAudioSource.Play();
     }
 }
