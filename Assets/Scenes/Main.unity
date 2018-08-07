@@ -3235,6 +3235,20 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 580744068}
+    - target: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_IsPrefabParent: 0
