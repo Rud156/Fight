@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4844129048776232}
   - component: {fileID: 114215676911482952}
-  - component: {fileID: 114805779900456826}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -56,6 +55,7 @@ GameObject:
   - component: {fileID: 33147400446252442}
   - component: {fileID: 23366046586925746}
   - component: {fileID: 65767317833565760}
+  - component: {fileID: 114915346886870798}
   m_Layer: 0
   m_Name: Missile Body
   m_TagString: Missile
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 33869392367425406}
   - component: {fileID: 23363419318775524}
   - component: {fileID: 65061848891518308}
+  - component: {fileID: 114542293844462770}
   m_Layer: 0
   m_Name: Missile Body (2)
   m_TagString: Missile
@@ -92,6 +93,7 @@ GameObject:
   - component: {fileID: 33873346797726540}
   - component: {fileID: 23319938951585840}
   - component: {fileID: 65184268855133216}
+  - component: {fileID: 114459603338488932}
   m_Layer: 0
   m_Name: Missile Body (1)
   m_TagString: Missile
@@ -182,7 +184,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f073e637beb233c4eb1e5bfc0e911d1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,7 +218,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f073e637beb233c4eb1e5bfc0e911d1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -250,7 +252,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f073e637beb233c4eb1e5bfc0e911d1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -340,20 +342,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homingSensitivity: 0.1
   speed: 10
---- !u!114 &114805779900456826
+--- !u!114 &114459603338488932
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1312280825263616}
+  m_GameObject: {fileID: 1848252424797438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf1e94c968c42aa408216a1225f5d7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1796161431321024, guid: 3589e9de1b016964b8d71fe0308b05bb, type: 2}
-  damageRadius: 3
-  damagePower: 10
+  missileDamage: 50
+  destroyParent: 1
+--- !u!114 &114542293844462770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722464009972636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1e94c968c42aa408216a1225f5d7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1796161431321024, guid: 3589e9de1b016964b8d71fe0308b05bb, type: 2}
+  missileDamage: 50
+  destroyParent: 1
+--- !u!114 &114915346886870798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497998920057556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1e94c968c42aa408216a1225f5d7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1796161431321024, guid: 3589e9de1b016964b8d71fe0308b05bb, type: 2}
+  missileDamage: 50
+  destroyParent: 1
 --- !u!198 &198653413586009778
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -414,7 +444,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1790887544
+  randomSeed: -917158287
   InitialModule:
     serializedVersion: 3
     enabled: 1

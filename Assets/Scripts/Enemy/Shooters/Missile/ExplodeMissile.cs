@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ExplodeMissile : MonoBehaviour
 {
-
     [Header("Explosion Effect")]
     public GameObject explosion;
 
     [Header("Missile Damage")]
     public float missileDamage;
+
+    [Header("Destroy Parent")]
+    public bool destroyParent = false;
 
     /// <summary>
     /// OnTriggerEnter is called when the Collider other enters the trigger.
@@ -18,6 +20,9 @@ public class ExplodeMissile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Instantiate(explosion, gameObject.transform.position, explosion.transform.rotation);
-        Destroy(gameObject);
+        if (destroyParent)
+            Destroy(gameObject.transform.parent.gameObject);
+        else
+            Destroy(gameObject);
     }
 }

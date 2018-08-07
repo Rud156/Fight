@@ -2997,6 +2997,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114200624081225222, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: bossEnemyDeadObject
+      value: 
+      objectReference: {fileID: 1012458815}
+    - target: {fileID: 114723764644948276, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1426630699}
     - target: {fileID: 114988445842412888, guid: 54bfe494372540e42a0bc63517c1ca10,
         type: 2}
       propertyPath: screenOverlay
@@ -3007,39 +3017,6 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 580744068}
-    - target: {fileID: 114723764644948276, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1426630699}
-    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224359216209527938, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738486747507758, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4288510156422100, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114200624081225222, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: bossEnemyDeadObject
-      value: 
-      objectReference: {fileID: 1012458815}
-    - target: {fileID: 114200624081225222, guid: 54bfe494372540e42a0bc63517c1ca10,
-        type: 2}
-      propertyPath: maxBossHealth
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_IsPrefabParent: 0

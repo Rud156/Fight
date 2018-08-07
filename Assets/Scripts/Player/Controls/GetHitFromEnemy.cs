@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GetHitFromEnemy : MonoBehaviour
 {
-
     private Animator playerAnimator;
 
     /// <summary>
