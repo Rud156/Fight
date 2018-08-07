@@ -27,7 +27,7 @@ public class ChangeSceneOnTrigger : MonoBehaviour
         textAnimator.SetTrigger(UIControlsManager.TextParam);
         screenAnimator.SetTrigger(UIControlsManager.FadeOutParam);
 
-        // Invoke("LoadMainScene", changeSceneAfterTime);
+        Invoke("LoadMainScene", changeSceneAfterTime);
     }
 
     public void BossEnemyDead()
@@ -40,7 +40,7 @@ public class ChangeSceneOnTrigger : MonoBehaviour
         textAnimator.SetTrigger(UIControlsManager.TextParam);
         screenAnimator.SetTrigger(UIControlsManager.FadeOutParam);
 
-        // Invoke("LoadMainScene", changeSceneAfterTime);
+        Invoke("LoadMainScene", changeSceneAfterTime);
     }
 
     void LoadMainScene()
