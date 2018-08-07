@@ -1090,7 +1090,7 @@ Prefab:
     - target: {fileID: 224249668347801306, guid: ceabdfb4108d9c0428841950201533b7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -133.1337
+      value: -133.1336
       objectReference: {fileID: 0}
     - target: {fileID: 224249668347801306, guid: ceabdfb4108d9c0428841950201533b7,
         type: 2}
@@ -1398,7 +1398,7 @@ Prefab:
     - target: {fileID: 224951060362146260, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -332.62653
+      value: -332.62677
       objectReference: {fileID: 0}
     - target: {fileID: 224951060362146260, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
@@ -1469,6 +1469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1340271833}
   - component: {fileID: 1340271834}
+  - component: {fileID: 1340271835}
   m_Layer: 5
   m_Name: Controls Panel
   m_TagString: Untagged
@@ -1494,7 +1495,7 @@ RectTransform:
   m_AnchorMin: {x: 0.7537101, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00012207031, y: 0}
-  m_SizeDelta: {x: 0.00030517578, y: 0}
+  m_SizeDelta: {x: 0.0003232447, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1340271834
 CanvasRenderer:
@@ -1502,6 +1503,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1340271832}
+--- !u!114 &1340271835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1340271832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 0.76653355
 --- !u!1 &1360739832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1686,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1438392951}
+--- !u!1 &1606462679 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1588120537373952, guid: a4b2a862f537704428b969befba4be73,
+    type: 2}
+  m_PrefabInternal: {fileID: 1308717944}
+--- !u!114 &1606462680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1606462679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 1.5663738
 --- !u!1 &1789831917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859387151}
   - component: {fileID: 1859387153}
+  - component: {fileID: 1859387152}
   m_Layer: 5
   m_Name: Info Panel
   m_TagString: Untagged
@@ -1872,9 +1905,22 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.2374276, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: -0.00003220886, y: 0}
+  m_AnchoredPosition: {x: 0.0025024414, y: 0}
+  m_SizeDelta: {x: -0.000030527524, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1859387152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1859387150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 0.7389503
 --- !u!222 &1859387153
 CanvasRenderer:
   m_ObjectHideFlags: 0
