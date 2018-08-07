@@ -6,31 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSceneOnTrigger : MonoBehaviour
 {
-    private Animator textAnimator;
-    private Text majorText;
+    [Header("UI Effects")]
+    public Animator textAnimator;
+    public Text majorText;
+    public Animation screenAnimation;
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
-    void Start()
+    [Header("Objects to Affect")]
+    public GameObject bossEnemy;
+    public GameObject minionEnemyHolder;
+
+    public void PlayerDead()
     {
-        GameObject majorTextObject = GameObject.FindGameObjectWithTag(TagsManager.DisplayText);
-        textAnimator = majorTextObject.GetComponent<Animator>();
-        majorText = majorTextObject.GetComponent<Text>();
+        Destroy(bossEnemy);
+        Destroy(minionEnemyHolder);
+
+        majorText.text = "You are Dead !!!";
+        majorText.color = Color.red;
+        textAnimator.Play(UIControlsManager.TextAnimation);
+
+        screenAnimation.Play(UIControlsManager.FadeOutAnimation);
+        Invoke("LoadMainScene", 1.3f);
     }
 
-    void OnParticleSystemStopped()
+    public void BossEnemyDead()
     {
-        DisplayText();
-    }
+        Destroy(minionEnemyHolder);
 
-    void DisplayText()
-    {
-        majorText.text = "You are dead !!!";
+        majorText.text = "You Won !!!";
         majorText.color = Color.green;
-        textAnimator.Play("TextZoomIn");
+        textAnimator.Play(UIControlsManager.TextAnimation);
 
+        screenAnimation.Play(UIControlsManager.FadeOutAnimation);
         Invoke("LoadMainScene", 1.3f);
     }
 

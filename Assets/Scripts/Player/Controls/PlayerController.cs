@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
@@ -19,10 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject footContact;
 
     [Header("After Player Dead")]
-    public GameObject bossEnemy;
-    public GameObject minionHolder;
-    public Animator textAnimator;
-    public Text majorText;
+    public GameObject playerDeadObject;
 
     private Rigidbody playerRB;
     private Animator playerAnimator;
@@ -201,23 +196,11 @@ public class PlayerController : MonoBehaviour
     {
         if (PlayerData.currentHealthLeft <= 0 && !playerDeadInvoked)
         {
-            Destroy(bossEnemy);
-            Destroy(minionHolder);
-
-            majorText.text = "You are dead !!!";
-            majorText.color = Color.red;
-            textAnimator.Play("TextZoomIn");
-
             disablePlayerMovement = true;
             playerDeadInvoked = true;
             playerAnimator.SetBool(PlayerControlsManager.DeadParam, true);
 
-            Invoke("LoadMainScene", 1.3f);
+            playerDeadObject.GetComponent<ChangeSceneOnTrigger>().PlayerDead();
         }
-    }
-
-    void LoadMainScene()
-    {
-        SceneManager.LoadScene(0);
     }
 }

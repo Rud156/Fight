@@ -17,6 +17,9 @@ public class BossEnemyDamageAndDeathControls : MonoBehaviour
     public Slider bossHealthSlider;
     public Image bossHealthFiller;
 
+    [Header("After Boss Enemy Dead")]
+    public GameObject bossEnemyDeadObject;
+
     [HideInInspector]
     public float currentBossHealth;
 
@@ -44,6 +47,8 @@ public class BossEnemyDamageAndDeathControls : MonoBehaviour
             Vector3 position = gameObject.transform.position;
             Instantiate(deathEffect, new Vector3(position.x, 3.5f, position.z),
                 deathEffect.transform.rotation);
+
+            bossEnemyDeadObject.GetComponent<ChangeSceneOnTrigger>().BossEnemyDead();
             Destroy(gameObject);
         }
     }
