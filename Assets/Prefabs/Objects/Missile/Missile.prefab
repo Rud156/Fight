@@ -340,8 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b8ed66ce796db40b4867d2b9d8fc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingSensitivity: 0.1
-  speed: 10
+  homingSensitivity: 0.5
+  speed: 15
 --- !u!114 &114459603338488932
 MonoBehaviour:
   m_ObjectHideFlags: 1
