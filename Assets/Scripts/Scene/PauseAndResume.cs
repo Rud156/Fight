@@ -55,6 +55,7 @@ public class PauseAndResume : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
