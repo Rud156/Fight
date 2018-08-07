@@ -45,6 +45,8 @@ public class ChangeSceneOnTrigger : MonoBehaviour
 
     void LoadMainScene()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }
 }
