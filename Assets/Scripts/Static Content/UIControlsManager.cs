@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class UIControlsManager
 {
-    public const string TextAnimation = "TextZoomIn";
-    public const string FadeOutAnimation = "FadeOut";
+    public const string TextParam = "TextZoomIn";
+    public const string FadeOutParam = "FadeOut";
 }

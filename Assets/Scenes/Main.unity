@@ -3035,6 +3035,11 @@ Prefab:
       propertyPath: bossEnemyDeadObject
       value: 
       objectReference: {fileID: 1012458815}
+    - target: {fileID: 114200624081225222, guid: 54bfe494372540e42a0bc63517c1ca10,
+        type: 2}
+      propertyPath: maxBossHealth
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54bfe494372540e42a0bc63517c1ca10, type: 2}
   m_IsPrefabParent: 0
@@ -3132,7 +3137,7 @@ GameObject:
   - component: {fileID: 819849849}
   - component: {fileID: 819849852}
   - component: {fileID: 819849851}
-  - component: {fileID: 819849850}
+  - component: {fileID: 819849853}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3148,7 +3153,7 @@ RectTransform:
   m_GameObject: {fileID: 819849848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 508875805}
   m_RootOrder: 0
@@ -3158,23 +3163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &819849850
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 819849848}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eb5069961f95fcc468b02fbf46877d4c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &819849851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3214,6 +3202,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 819849848}
+--- !u!95 &819849853
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819849848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8aa76d7c94ef5649b8171af5d1febba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &849705728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,9 +3528,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cb12239760a04ba7bfba33f71655b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAnimator: {fileID: 819849850}
+  textAnimator: {fileID: 819849853}
   majorText: {fileID: 819849851}
-  screenAnimation: {fileID: 1984670011}
+  screenAnimator: {fileID: 1984670011}
+  changeSceneAfterTime: 2.1
   bossEnemy: {fileID: 1175335300}
   minionEnemyHolder: {fileID: 599019797}
 --- !u!1 &1018879393
@@ -6736,22 +6742,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1984670011
-Animation:
+--- !u!95 &1984670011
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984670009}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: fb4259c134cd7ed4aa12ed91037ee9ac, type: 2}
-  - {fileID: 7400000, guid: 9efcbec2680ef5245b6455ad33ad8233, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53a80f668f71bb7449677b1d428ac055, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2004962539
 GameObject:
   m_ObjectHideFlags: 0

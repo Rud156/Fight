@@ -9,7 +9,8 @@ public class ChangeSceneOnTrigger : MonoBehaviour
     [Header("UI Effects")]
     public Animator textAnimator;
     public Text majorText;
-    public Animation screenAnimation;
+    public Animator screenAnimator;
+    public float changeSceneAfterTime = 2.1f;
 
     [Header("Objects to Affect")]
     public GameObject bossEnemy;
@@ -22,10 +23,11 @@ public class ChangeSceneOnTrigger : MonoBehaviour
 
         majorText.text = "You are Dead !!!";
         majorText.color = Color.red;
-        textAnimator.Play(UIControlsManager.TextAnimation);
 
-        screenAnimation.Play(UIControlsManager.FadeOutAnimation);
-        Invoke("LoadMainScene", 1.3f);
+        textAnimator.SetTrigger(UIControlsManager.TextParam);
+        screenAnimator.SetTrigger(UIControlsManager.FadeOutParam);
+
+        // Invoke("LoadMainScene", changeSceneAfterTime);
     }
 
     public void BossEnemyDead()
@@ -34,10 +36,11 @@ public class ChangeSceneOnTrigger : MonoBehaviour
 
         majorText.text = "You Won !!!";
         majorText.color = Color.green;
-        textAnimator.Play(UIControlsManager.TextAnimation);
 
-        screenAnimation.Play(UIControlsManager.FadeOutAnimation);
-        Invoke("LoadMainScene", 1.3f);
+        textAnimator.SetTrigger(UIControlsManager.TextParam);
+        screenAnimator.SetTrigger(UIControlsManager.FadeOutParam);
+
+        // Invoke("LoadMainScene", changeSceneAfterTime);
     }
 
     void LoadMainScene()
