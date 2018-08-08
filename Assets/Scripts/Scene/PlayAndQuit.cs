@@ -8,6 +8,8 @@ public class PlayAndQuit : MonoBehaviour
     public void PlayGame()
     {
         NextSceneToLoad.nextSceneIndex = 1;
+        // Reset Health
+        PlayerData.currentHealthLeft = PlayerData.maxHealth;
         SceneManager.LoadScene(2);
     }
 
