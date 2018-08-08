@@ -440,7 +440,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8bdce3278211cac4db5435d6ea92b14f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1090,7 +1090,7 @@ Prefab:
     - target: {fileID: 224249668347801306, guid: ceabdfb4108d9c0428841950201533b7,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -133.1336
+      value: -135.10612
       objectReference: {fileID: 0}
     - target: {fileID: 224249668347801306, guid: ceabdfb4108d9c0428841950201533b7,
         type: 2}
@@ -1323,7 +1323,7 @@ Prefab:
     - target: {fileID: 224581518344641222, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 11.551727
       objectReference: {fileID: 0}
     - target: {fileID: 224581518344641222, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
@@ -1368,7 +1368,7 @@ Prefab:
     - target: {fileID: 224312970496525248, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -50.874634
+      value: -51.628387
       objectReference: {fileID: 0}
     - target: {fileID: 224312970496525248, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
@@ -1398,7 +1398,7 @@ Prefab:
     - target: {fileID: 224951060362146260, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -332.62677
+      value: -337.5546
       objectReference: {fileID: 0}
     - target: {fileID: 224951060362146260, guid: a4b2a862f537704428b969befba4be73,
         type: 2}
