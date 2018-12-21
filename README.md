@@ -1,5 +1,5 @@
 # Fight
-A single simple boss fight scene
+A single level boss battle inspired by Nier Automata Opera Singer. Try and kill the boss to win the game
 
 ### Gameplay:
 [![Gameplay](https://img.youtube.com/vi/OB6Xc-mvPBI/0.jpg)](https://www.youtube.com/watch?v=OB6Xc-mvPBI)
